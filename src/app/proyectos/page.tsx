@@ -1,0 +1,305 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
+
+export default function ProyectosPage() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  const obras = [
+    {
+      titulo: "Inicio Sesión",
+      descripcion: "Proyecto frontend sobre un inicio de sesión elegante con Tailwind CSS.",
+      imagen: "/images/inicio-sesion.png",
+      tecnologias: ["React", "Tailwind CSS", "TypeScript"],
+      github: "https://github.com/JulianMoreno627/taller-maquetacion-con-tailwindCSS.git",
+      demo: "https://inicio-sesion.vercel.app",
+    },
+    {
+      titulo: "Interfaz",
+      descripcion: "Interfaz sobre tarjetas creado con tailwindv y next.js.",
+      imagen: "/images/proyecto2.jpg",
+      tecnologias: ["Next.js", "Tailwind CSS"],
+      github: "https://github.com/tu-usuario/interfaz",
+      demo: "https://interfaz.vercel.app",
+    },
+    {
+      titulo: "Diseño Ticket",
+      descripcion: "Diseño web sobre un boleto de bus con Tailwind CSS.",
+      imagen: "/images/proyecto3.jpg",
+      tecnologias: ["HTML", "Tailwind CSS"],
+      github: "https://github.com/tu-usuario/ticket",
+      demo: "https://ticket.vercel.app",
+    },
+    {
+      titulo: "Agencia de viajes",
+      descripcion: "Página Web sobre agencia de viajes realizada con Django y CSS.",
+      imagen: "/images/proyecto4.jpg",
+      tecnologias: ["Django", "CSS", "Python"],
+      github: "https://github.com/tu-usuario/agencia",
+      demo: "https://agencia.vercel.app",
+    },
+  ];
+
+  const colaboraciones = [
+    {
+      titulo: "Mascotas",
+      descripcion: "Proyecto fronted sobre una página para mascotas realizada con Angular.",
+      imagen: "/images/collab1.jpg",
+      tecnologias: ["Angular", "TypeScript"],
+      github: "https://github.com/tu-usuario/mascotas",
+      demo: "https://mascotas.vercel.app",
+    },
+    {
+      titulo: "Músculos",
+      descripcion: "App web sobre colier realizador de muscular realizada con Websoket.",
+      imagen: "/images/collab2.jpg",
+      tecnologias: ["WebSocket", "Node.js", "React"],
+      github: "https://github.com/tu-usuario/musculos",
+      demo: "https://musculos.vercel.app",
+    },
+  ];
+
+  const closeModal = () => setSelectedProject(null);
+
+  const ProjectCard = ({ 
+    project, 
+    index 
+  }: { 
+    project: typeof obras[0]; 
+    index: number;
+  }) => (
+    <div
+      onClick={() => setSelectedProject(index)}
+      className={`rounded-xl overflow-hidden cursor-pointer ${
+        darkMode
+          ? "bg-gray-900 border border-gray-800"
+          : "bg-gray-50 border border-gray-200"
+      } hover:scale-105 transition-all duration-300 hover:shadow-xl`}
+    >
+      <div className="relative h-48 w-full bg-gray-800">
+        <Image
+          src={project.imagen}
+          alt={project.titulo}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="p-5">
+        <h3 className="text-xl font-semibold mb-2">{project.titulo}</h3>
+        <p className={`text-sm mb-4 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+          {project.descripcion}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {project.tecnologias.map((tech, i) => (
+            <span
+              key={i}
+              className={`px-3 py-1 rounded-full text-xs ${
+                darkMode
+                  ? "bg-cyan-900/30 text-cyan-400"
+                  : "bg-cyan-100 text-cyan-700"
+              }`}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <main
+      className={`min-h-screen ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      } flex flex-col items-center px-6 py-10 transition-colors duration-300`}
+    >
+      {/* NAVBAR */}
+      <nav className="w-full max-w-4xl mx-auto flex items-center justify-between py-4">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
+          <span className="text-sm">🐾</span>
+          <span className="text-sm font-semibold">Julián Moreno</span>
+        </Link>
+
+        <div className="flex gap-6 text-sm items-center">
+          <Link href="/informacion" className="hover:text-cyan-400 transition">
+            Información
+          </Link>
+          <Link href="/proyectos" className="text-cyan-400 transition">
+            Proyectos
+          </Link>
+          <Link href="/servicios" className="hover:text-cyan-400 transition">
+            Servicios
+          </Link>
+          <Link href="/contacto" className="hover:text-cyan-400 transition">
+            Contacto
+          </Link>
+        </div>
+
+        <button
+          aria-label="theme"
+          onClick={() => setDarkMode(!darkMode)}
+          className={`w-9 h-9 rounded-md flex items-center justify-center shadow ${
+            darkMode ? "bg-yellow-200 text-black" : "bg-gray-800 text-yellow-200"
+          } transition`}
+        >
+          {darkMode ? "☀" : "🌙"}
+        </button>
+      </nav>
+
+      {/* CONTENIDO */}
+      <section className="w-full max-w-4xl mt-16">
+        {/* OBRAS */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-2">Obras</h2>
+          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-cyan-500" : "bg-cyan-600"}`}></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {obras.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
+        {/* COLABORACIONES */}
+        <div>
+          <h2 className="text-3xl font-bold mb-2">Colaboraciones</h2>
+          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-cyan-500" : "bg-cyan-600"}`}></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {colaboraciones.map((project, index) => (
+              <ProjectCard 
+                key={index} 
+                project={project} 
+                index={index + obras.length} 
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MODAL */}
+      {selectedProject !== null && (
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4 animate-fade-in"
+          onClick={closeModal}
+        >
+          <div
+            className={`${
+              darkMode ? "bg-gray-900 border-gray-800" : "bg-white border-gray-200"
+            } border rounded-2xl max-w-md w-full p-8 animate-scale-in shadow-2xl`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {(() => {
+              const allProjects = [...obras, ...colaboraciones];
+              const project = allProjects[selectedProject];
+              
+              return (
+                <>
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-2xl font-bold">{project.titulo}</h3>
+                    <button
+                      onClick={closeModal}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        darkMode
+                          ? "hover:bg-gray-800"
+                          : "hover:bg-gray-100"
+                      } transition`}
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <p className={`mb-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                    {project.descripcion}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tecnologias.map((tech, i) => (
+                      <span
+                        key={i}
+                        className={`px-3 py-1 rounded-full text-xs ${
+                          darkMode
+                            ? "bg-cyan-900/30 text-cyan-400"
+                            : "bg-cyan-100 text-cyan-700"
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="space-y-3">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition ${
+                        darkMode
+                          ? "bg-gray-800 hover:bg-gray-700 text-white"
+                          : "bg-gray-900 hover:bg-gray-800 text-white"
+                      }`}
+                    >
+                      <span className="text-xl">🐙</span>
+                      Ver en GitHub
+                    </a>
+
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition ${
+                        darkMode
+                          ? "bg-cyan-600 hover:bg-cyan-500 text-black"
+                          : "bg-cyan-500 hover:bg-cyan-600 text-white"
+                      }`}
+                    >
+                      <span className="text-xl">🚀</span>
+                      Ver Demo en Vivo
+                    </a>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      )}
+
+      <footer className="w-full max-w-4xl mx-auto mt-20 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
+      </footer>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.2s ease-out;
+        }
+
+        .animate-scale-in {
+          animation: scale-in 0.3s ease-out;
+        }
+      `}</style>
+    </main>
+  );
+}

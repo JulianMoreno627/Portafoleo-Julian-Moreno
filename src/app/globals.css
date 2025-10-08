@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Si ya tienes reglas, añade solo scroll-behavior; la apariencia la manejamos con Tailwind util classes */
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

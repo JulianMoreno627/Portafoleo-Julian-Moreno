@@ -1,128 +1,153 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-10">
-      {/* NAVBAR: logo a la izquierda, links centrados, control a la derecha (como en la imagen) */}
+    <main
+      className={`min-h-screen ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      } flex flex-col items-center px-6 py-10 transition-colors duration-300`}
+    >
+      {/* NAVBAR */}
       <nav className="w-full max-w-4xl mx-auto flex items-center justify-between py-4">
-        {/* Logo / nombre */}
-        <div className="flex items-center gap-3">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
           <span className="text-sm">🐾</span>
           <span className="text-sm font-semibold">Julián Moreno</span>
-        </div>
+        </Link>
 
-        {/* Links centrados en la barra superior (ordenados en fila) */}
+        {/* Links */}
         <div className="flex gap-6 text-sm items-center">
-          <a href="#" className="text-gray-300 hover:text-cyan-400 transition">Works</a>
-          <a href="#" className="text-gray-300 hover:text-cyan-400 transition">Posts</a>
-          <a href="#" className="text-gray-300 hover:text-cyan-400 transition">Uses</a>
-          <a href="#" className="text-gray-300 hover:text-cyan-400 transition">Source</a>
+          <Link href="/informacion" className="hover:text-cyan-400 transition">
+            Información
+          </Link>
+          <Link href="/proyectos" className="hover:text-cyan-400 transition">
+            Proyectos
+          </Link>
+          <Link href="/servicios" className="hover:text-cyan-400 transition">
+            Servicios
+          </Link>
+          <Link href="/contacto" className="hover:text-cyan-400 transition">
+            Contacto
+          </Link>
         </div>
 
-        {/* Acción / toggle (ejemplo) */}
-        <div>
-          <button
-            aria-label="theme"
-            className="w-9 h-9 rounded-md bg-yellow-200 text-black flex items-center justify-center shadow"
-          >
-            ☀
-          </button>
-        </div>
+        {/* Botón modo claro / oscuro */}
+        <button
+          aria-label="theme"
+          onClick={() => setDarkMode(!darkMode)}
+          className={`w-9 h-9 rounded-md flex items-center justify-center shadow ${
+            darkMode ? "bg-yellow-200 text-black" : "bg-gray-800 text-yellow-200"
+          } transition`}
+        >
+          {darkMode ? "☀" : "🌙"}
+        </button>
       </nav>
 
-      {/* CONTENEDOR PRINCIPAL CENTRADO (similar al layout del ejemplo) */}
-      <section className="w-full max-w-4xl mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-        {/* Nombre, rol y descripción (ocupa 2 columnas en pantallas md+) */}
-        <div className="md:col-span-2 flex flex-col justify-center">
-          {/* pequeño badge sombreado (opcional) */}
-          <div className="inline-block bg-gray-800/60 px-4 py-2 rounded-md text-sm text-gray-300 mb-6">
-            Hola — desarrollador de aplicaciones · Pasto, Colombia
-          </div>
-
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">Julián Moreno</h1>
-          <p className="mt-2 text-gray-400">
-            Digital Craftsman · Desarrollador / Diseñador / Emprendedor
-          </p>
-
-          <div className="mt-6 max-w-xl text-gray-300 leading-relaxed">
-            <p>
-              Soy una persona creativa e intuitiva, con una gran curiosidad por aprender y conocer nuevas ideas. En
-              mis tiempos libres disfruto cocinar, y compartir con quienes me rodean. El deporte también ocupa un un gran lugar en mi vida: 
-              me gusta ir al gimnasio y mantenerme activo. Cuando no estoy frente al computador, puedes encontrarme entrenando,
-              disfrutando del aire libre o pasando tiempo de calidad con mi familia.
-            </p>
-          </div>
-
-          <div className="mt-6">
-            <a
-              href="#"
-              className="inline-block px-5 py-2 bg-cyan-500 text-black font-semibold rounded-md shadow hover:bg-cyan-400 transition"
-            >
-              Mi portafolio →
-            </a>
-          </div>
+      {/* HERO SECTION */}
+      <section className="w-full max-w-4xl mt-16 text-center">
+        {/* Imagen 3D o ilustración */}
+        <div className="flex justify-center mb-8">
+          <Image
+            src="/images/lampara-v.jpg"
+            alt="Ilustración 3D"
+            width={300}
+            height={300}
+            className="rounded-xl object-cover"
+          />
         </div>
 
-        {/* Avatar a la derecha (alineado con contenido, con anillo) */}
-        <div className="flex justify-center md:justify-end">
-          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden ring-4 ring-cyan-600/40">
-            <Image
-              src="/Images/foto-perfil.jpg"
-              alt="Foto de Julián Moreno"
-              width={144}
-              height={144}
-              className="object-cover"
-            />
+        {/* Mensaje de bienvenida */}
+        <div
+          className={`inline-block ${
+            darkMode ? "bg-gray-800/60" : "bg-gray-200"
+          } px-6 py-3 rounded-lg text-sm mb-6`}
+        >
+          Soy desarrollador con sede en Colombia!
+        </div>
+
+        {/* Nombre y título */}
+        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4">
+          ¡Hola! Yo soy Julián 
+        </h1>
+        <p
+          className={`text-lg ${
+            darkMode ? "text-gray-400" : "text-gray-700"
+          }`}
+        >
+          Digital Craftsman ( Desarrollador / Diseñador / Emprendedor )
+        </p>
+      </section>
+
+      {/* SECCIÓN WORK */}
+      <section className="w-full max-w-4xl mt-20">
+        <h2 className="text-3xl font-bold mb-6">Work</h2>
+        <p
+          className={`leading-relaxed mb-6 ${
+            darkMode ? "text-gray-300" : "text-gray-800"
+          }`}
+        >
+          Soy una persona creativa e intuitiva, con una gran curiosidad por
+          aprender y conocer nuevas ideas. Me especializo en desarrollo web y
+          móvil, creando experiencias digitales que combinan funcionalidad con
+          diseño. En mis tiempos libres disfruto cocinar, compartir con quienes
+          me rodean y mantenerme activo. Cuando no estoy frente al computador,
+          me gusta entrenar, disfrutar del aire libre o pasar tiempo de calidad
+          con mi familia.
+        </p>
+        <Link
+          href="/proyectos"
+          className={`inline-flex items-center gap-2 px-5 py-2 ${
+            darkMode
+              ? "bg-cyan-500 text-black hover:bg-cyan-400"
+              : "bg-cyan-600 text-white hover:bg-cyan-500"
+          } font-semibold rounded-md shadow transition`}
+        >
+          Mi portafolio →
+        </Link>
+      </section>
+
+      {/* SECCIÓN BIO */}
+      <section className="w-full max-w-4xl mt-20">
+        <h2 className="text-3xl font-bold mb-6">Bio</h2>
+        <div className="space-y-4">
+          <div className="flex gap-8">
+            <span className={`font-bold ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              2000
+            </span>
+            <span>Nacido en Pasto, Colombia</span>
+          </div>
+          <div className="flex gap-8">
+            <span className={`font-bold ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              2023
+            </span>
+            <span>Desarrollador Full Stack independiente</span>
+          </div>
+          <div className="flex gap-8">
+            <span className={`font-bold ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              2024
+            </span>
+            <span>Enfoque en proyectos personales y emprendimiento</span>
           </div>
         </div>
       </section>
 
-      {/* SECCIONES: Work y Bio, en paneles oscuros (no blancos) */}
-      <section className="w-full max-w-4xl mt-12 grid grid-cols-1 gap-8">
-        {/* Work (panel oscuro con borde sutil) */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-6">
-          <h3 className="text-xl font-semibold text-white">Trabajo</h3>
-          <p className="mt-4 text-gray-300 leading-relaxed max-w-3xl">
-            Soy un programador apasionado por el desarrollo web, con un enfoque especial 
-            en el frontend.Disfruto diseñar interfaces atractivas, crear aplicaciones web y 
-            trabajar en experiencias responsivas y funcionales. Me gusta combinar creatividad y técnica para dar vida a proyectos
-            que conecten con los usuarios. Aunque mi fortaleza está en el frontend, también me interesa profundizar en el backend para poder construir soluciones más completas y robustas.
-          </p>
-
-          {/* imagen ilustrativa centrada */}
-          <div className="mt-6 flex justify-center">
-            <div className="w-full max-w-xl rounded-lg overflow-hidden">
-              <Image
-                src="/Images/lampara-v.jpg"
-                alt="Ilustración Work"
-                width={920}
-                height={360}
-                className="object-cover w-full h-auto rounded-lg"
-              />
-            </div>
-          </div>
-
-          <div className="mt-6 flex justify-center">
-            <a className="inline-block px-5 py-2 bg-cyan-600 text-black font-semibold rounded-md shadow hover:bg-cyan-500 transition" href="#">
-              Ver proyectos →
-            </a>
-          </div>
-        </div>
-
-        {/* Bio (panel oscuro) */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-6">
-          <h3 className="text-lg font-semibold text-white">Biografía</h3>
-          <ul className="mt-4 space-y-3 text-gray-300">
-            <li><span className="font-bold">2005</span> — Nace en Pasto, Nariño, Colombia.</li>
-          </ul>
-        </div>
+      {/* SECCIÓN I ❤ */}
+      <section className="w-full max-w-4xl mt-20">
+        <h2 className="text-3xl font-bold mb-6">I ❤</h2>
+        <p className={darkMode ? "text-gray-300" : "text-gray-800"}>
+          Tecnología, Diseño, Cocina, Fitness, Naturaleza, Fotografía
+        </p>
       </section>
 
-      {/* Pie (opcional) */}
-      <footer className="w-full max-w-4xl mx-auto mt-12 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Julián Moreno — Diseño oscuro y minimalista
+      {/* FOOTER */}
+      <footer className="w-full max-w-4xl mx-auto mt-20 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
       </footer>
     </main>
   );
