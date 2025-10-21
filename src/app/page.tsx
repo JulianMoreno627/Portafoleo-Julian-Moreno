@@ -1,8 +1,18 @@
 "use client";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import Link from "next/link";
+
+// Importar el componente 3D dinámicamente para evitar SSR
+const Model3D = dynamic(() => import("./components/Model3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[400px] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500"></div>
+    </div>
+  ),
+});
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
@@ -51,15 +61,11 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="w-full max-w-4xl mt-16 text-center">
-        {/* Imagen 3D o ilustración */}
+        {/* Modelo 3D */}
         <div className="flex justify-center mb-8">
-          <Image
-            src="/images/lampara-v.jpg"
-            alt="Ilustración 3D"
-            width={300}
-            height={300}
-            className="rounded-xl object-cover"
-          />
+          <div className="w-full max-w-md">
+            <Model3D darkMode={darkMode} />
+          </div>
         </div>
 
         {/* Mensaje de bienvenida */}
