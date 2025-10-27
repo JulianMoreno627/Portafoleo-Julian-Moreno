@@ -35,7 +35,8 @@ export default function Model3D({ darkMode }: Model3DProps) {
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.z = 11; // Alejado más para ver el modelo completo
+    camera.position.y = 1; // Ligeramente elevado para mejor ángulo
     cameraRef.current = camera;
 
     // Configurar renderer
@@ -67,7 +68,7 @@ export default function Model3D({ darkMode }: Model3DProps) {
       "/models/scene.gltf",
       (gltf) => {
         const object = gltf.scene;
-        object.scale.set(2, 2, 2);
+        object.scale.set(1.5, 1.5, 1.5); // Reducido para mejor vista
         
         const box = new THREE.Box3().setFromObject(object);
         const center = box.getCenter(new THREE.Vector3());
@@ -97,12 +98,11 @@ export default function Model3D({ darkMode }: Model3DProps) {
       animationIdRef.current = requestAnimationFrame(animate);
 
       if (objectRef.current) {
-        objectRef.current.rotation.y += 
-          (mouseRef.current.x * 0.5 - objectRef.current.rotation.y) * 0.05;
-        objectRef.current.rotation.x += 
-          (mouseRef.current.y * 0.2 - objectRef.current.rotation.x) * 0.05;
+        // Rotación continua suave en el eje Y
+        objectRef.current.rotation.y += 0.005;
         
-        objectRef.current.rotation.y += 0.002;
+        // Pequeña inclinación en X para mejor vista
+        objectRef.current.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
       }
 
       if (controlsRef.current) {
