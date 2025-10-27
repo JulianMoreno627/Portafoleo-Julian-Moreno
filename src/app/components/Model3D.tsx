@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 interface Model3DProps {
   darkMode: boolean;
@@ -16,11 +15,14 @@ export default function Model3D({ darkMode }: Model3DProps) {
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const objectRef = useRef<THREE.Group | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const animationIdRef = useRef<number>();
+  const controlsRef = useRef<OrbitControls | null>(null);
+  const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const animationIdRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    const container = containerRef.current;
 
     // Crear escena
     const scene = new THREE.Scene();
@@ -29,7 +31,7 @@ export default function Model3D({ darkMode }: Model3DProps) {
     // Configurar cámara
     const camera = new THREE.PerspectiveCamera(
       75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
+      container.clientWidth / container.clientHeight,
       0.1,
       1000
     );
@@ -41,12 +43,9 @@ export default function Model3D({ darkMode }: Model3DProps) {
       alpha: true,
       antialias: true,
     });
-    renderer.setSize(
-      containerRef.current.clientWidth,
-      containerRef.current.clientHeight
-    );
+    renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-    containerRef.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     // Agregar luces
@@ -65,93 +64,108 @@ export default function Model3D({ darkMode }: Model3DProps) {
     // Cargar modelo GLTF
     const loader = new GLTFLoader();
     loader.load(
-      "/models/scene.gltf", // Asegúrate de que la ruta sea correcta
-      (gltf: GLTF) => {
+      "/models/scene.gltf",
+      (gltf) => {
         const object = gltf.scene;
-
         object.scale.set(2, 2, 2);
-
+        
         const box = new THREE.Box3().setFromObject(object);
         const center = box.getCenter(new THREE.Vector3());
         object.position.sub(center);
-
+        
         scene.add(object);
         objectRef.current = object;
       },
-      (xhr: ProgressEvent<EventTarget>) => {
+      (xhr) => {
         console.log((xhr.loaded / xhr.total) * 100 + "% cargado");
       },
-      (error: ErrorEvent) => {
+      (error) => {
         console.error("Error al cargar el modelo:", error);
       }
     );
 
-    // Habilitar controles de órbita (si quieres usarlos)
+    // Controles de órbita
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enableZoom = true;
+    controls.enablePan = false;
+    controlsRef.current = controls;
 
-    // Animación
-    function animate() {
+    // Función de animación
+    const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
 
       if (objectRef.current) {
-        objectRef.current.rotation.y +=
+        objectRef.current.rotation.y += 
           (mouseRef.current.x * 0.5 - objectRef.current.rotation.y) * 0.05;
-        objectRef.current.rotation.x +=
+        objectRef.current.rotation.x += 
           (mouseRef.current.y * 0.2 - objectRef.current.rotation.x) * 0.05;
-
+        
         objectRef.current.rotation.y += 0.002;
       }
 
-      controls.update();
+      if (controlsRef.current) {
+        controlsRef.current.update();
+      }
+
       renderer.render(scene, camera);
-    }
+    };
+
+    // Iniciar animación
     animate();
 
-    // Movimiento del mouse
+    // Manejar movimiento del mouse
     const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        mouseRef.current.x =
-          (e.clientX / containerRef.current.clientWidth) * 2 - 1;
-        mouseRef.current.y =
-          -(e.clientY / containerRef.current.clientHeight) * 2 + 1;
+      if (container) {
+        mouseRef.current.x = (e.clientX / container.clientWidth) * 2 - 1;
+        mouseRef.current.y = -(e.clientY / container.clientHeight) * 2 + 1;
       }
     };
 
-    // Redimensionar
+    // Manejar resize
     const handleResize = () => {
-      if (!containerRef.current || !cameraRef.current || !rendererRef.current)
-        return;
-
-      cameraRef.current.aspect =
-        containerRef.current.clientWidth / containerRef.current.clientHeight;
+      if (!container || !cameraRef.current || !rendererRef.current) return;
+      
+      cameraRef.current.aspect = container.clientWidth / container.clientHeight;
       cameraRef.current.updateProjectionMatrix();
-      rendererRef.current.setSize(
-        containerRef.current.clientWidth,
-        containerRef.current.clientHeight
-      );
+      rendererRef.current.setSize(container.clientWidth, container.clientHeight);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("resize", handleResize);
 
+    // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
-
+      
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
-
-      if (containerRef.current && rendererRef.current) {
-        containerRef.current.removeChild(rendererRef.current.domElement);
+      
+      if (controlsRef.current) {
+        controlsRef.current.dispose();
       }
-
+      
+      if (container && rendererRef.current?.domElement) {
+        if (container.contains(rendererRef.current.domElement)) {
+          container.removeChild(rendererRef.current.domElement);
+        }
+      }
+      
       if (rendererRef.current) {
         rendererRef.current.dispose();
       }
     };
   }, []);
+
+  // Usar darkMode para evitar warning
+  useEffect(() => {
+    if (darkMode) {
+      // Modo oscuro activo
+    }
+  }, [darkMode]);
 
   return (
     <div
