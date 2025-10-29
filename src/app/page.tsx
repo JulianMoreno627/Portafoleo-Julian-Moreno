@@ -114,7 +114,7 @@ export default function Home() {
               : "bg-cyan-600 text-white hover:bg-cyan-500"
           } font-semibold rounded-md shadow transition`}
         >
-          Mi portafolio →
+          Mi portafolio 
         </Link>
       </section>
 
