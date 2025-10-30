@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -10,6 +11,14 @@ interface NavbarProps {
 
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (path: string) => pathname === path;
 
@@ -17,8 +26,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         darkMode 
-          ? "bg-[#1a1a1a]/90 backdrop-blur-md border-b border-gray-800/50" 
-          : "bg-white/90 backdrop-blur-md border-b border-gray-200/50"
+          ? `${isScrolled ? "bg-[#202023]/90 backdrop-blur-md shadow-sm" : "bg-[#202023]"}` 
+          : `${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-white"}`
       }`}
     >
       <div className="w-full max-w-4xl mx-auto flex items-center justify-between py-4 px-6">
