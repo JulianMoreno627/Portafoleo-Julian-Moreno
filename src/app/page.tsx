@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main
       className={`min-h-screen ${
-        darkMode ? "bg-[#202023] text-white" : "bg-white text-black"
+        darkMode ? "bg-[#202023] text-white" : "bg-[#f5e9da] text-black"
       } transition-colors duration-300`}
     >
       {/* NAVBAR STICKY */}

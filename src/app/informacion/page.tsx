@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export default function InformacionPage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -37,44 +37,14 @@ export default function InformacionPage() {
   return (
     <main
       className={`min-h-screen ${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+        darkMode ? "bg-[#202023] text-white" : "bg-[#f5e9da] text-black"
       } flex flex-col items-center px-6 py-10 transition-colors duration-300`}
     >
-      {/* NAVBAR */}
-      <nav className="w-full max-w-4xl mx-auto flex items-center justify-between py-4 mb-12">
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
-          <span className="text-sm">🐾</span>
-          <span className="text-sm font-semibold">Julián Moreno</span>
-        </Link>
-
-        <div className="flex gap-6 text-sm items-center">
-          <Link href="/informacion" className="text-cyan-400 transition">
-            Información
-          </Link>
-          <Link href="/proyectos" className="hover:text-cyan-400 transition">
-            Proyectos
-          </Link>
-          <Link href="/servicios" className="hover:text-cyan-400 transition">
-            Servicios
-          </Link>
-          <Link href="/contacto" className="hover:text-cyan-400 transition">
-            Contacto
-          </Link>
-        </div>
-
-        <button
-          aria-label="theme"
-          onClick={() => setDarkMode(!darkMode)}
-          className={`w-9 h-9 rounded-md flex items-center justify-center shadow ${
-            darkMode ? "bg-yellow-200 text-black" : "bg-gray-800 text-yellow-200"
-          } transition`}
-        >
-          {darkMode ? "☀" : "🌙"}
-        </button>
-      </nav>
+      {/* NAVBAR STICKY (compartida) */}
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       {/* CONTENIDO */}
-      <section className="w-full max-w-4xl">
+      <section className="w-full max-w-4xl mt-16">
         {/* HERO CON FOTO Y TÍTULO */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16">
           {/* Foto de perfil */}
