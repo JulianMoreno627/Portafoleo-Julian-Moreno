@@ -51,17 +51,20 @@ export default function Home() {
         </div>
 
         {/* Sección de perfil con foto a la derecha */}
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-12">
+        <div className="flex flex-col md:flex-row items-start gap-4 mb-10">
           {/* Info del perfil */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl font-bold mb-3">Julián Moreno</h1>
             <p className={`text-base text-white`}>
-              Desarrollador Full Stack ( Desarrollador / Diseñador )
+              Desarrollador Full Stack & Diseñador
+            </p>
+            <p className={`text-sm mt-2 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              💼 Freelancer · 🎓 Ingeniería de Software
             </p>
           </div>
 
           {/* Foto de perfil a la derecha */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 self-start md:mt-1">
             <div className="w-32 h-32 rounded-full overflow-hidden ring-2 ring-white">
               <Image
                 src="/images/foto-perfil.jpg"
@@ -74,44 +77,31 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Sección Trabajo con línea debajo del título */}
+        {/* Sección Trabajo */}
         <section className="mb-12">
-          <h3 className="text-xl font-bold mb-2 inline-block">
+          <h3 className="text-xl font-bold mb-0.5 inline-block">
             Trabajo
           </h3>
-          {/* Línea decorativa removida según solicitud */}
+          {/* Línea decorativa gris */}
+          <div className={`w-19 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
           <p className={`leading-relaxed mb-6 ${
             darkMode ? "text-gray-300" : "text-gray-700"
           }`}>
-            Soy una persona creativa e intuitiva, con una gran curiosidad por
-            aprender y conocer nuevas ideas. Me especializo en desarrollo web y
-            móvil, creando experiencias digitales que combinan funcionalidad con
-            diseño. En mis tiempos libres disfruto cocinar, compartir con quienes
-            me rodean y mantenerme activo.
+            Soy una persona creativa e intuitiva, con una gran curiosidad por aprender y explorar nuevas ideas.
+            Mi enfoque principal está en el desarrollo web y móvil full stack, donde combino creatividad y lógica
+            para construir interfaces atractivas y sistemas escalables. Me apasiona transformar ideas en soluciones
+            digitales funcionales que generen experiencias útiles y significativas para las personas.
           </p>
-
-          {/* Botones con colores cyan/teal */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link
-              href="/proyectos"
-              className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
-                darkMode
-                  ? "bg-teal-500 text-white hover:bg-teal-400"
-                  : "bg-teal-600 text-white hover:bg-teal-500"
-              }`}
-            >
-              Mi portafolio
-              <span>→</span>
-            </Link>
-
+          {/* Botón Descargar CV (texto negro) */}
+          <div className="flex justify-center mb-8">
             <a
               href="/cv.pdf"
               download
-              className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-medium transition-all ${
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all ${
                 darkMode
-                  ? "bg-teal-500 text-white hover:bg-teal-400"
-                  : "bg-teal-600 text-white hover:bg-teal-500"
+                  ? "bg-teal-500 text-black hover:bg-teal-400"
+                  : "bg-teal-600 text-black hover:bg-teal-500"
               }`}
             >
               Descargar CV
@@ -120,12 +110,52 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Sección Sobre mí */}
+        <section className="mb-12">
+          <h3 className="text-xl font-bold mb-0.5 inline-block">Sobre mí</h3>
+          {/* Línea decorativa gris */}
+          <div className={`w-22 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
+          <p
+            className={`leading-relaxed mb-4 ${
+              darkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            Soy un estudiante de Ingeniería de Software apasionado por crear experiencias digitales únicas.
+            Nací en 2005 en la ciudad de Pasto, Colombia, un lugar que me ha enseñado el valor del trabajo constante
+            y la perseverancia.
+          </p>
+          <p
+            className={`leading-relaxed mb-6 ${
+              darkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+          >
+            Cuando no estoy programando, disfruto entrenar, cocinar, explorar la naturaleza y pasar tiempo de calidad con mi familia.
+            Creo firmemente en el aprendizaje continuo y en mantener un equilibrio entre la vida profesional y personal.
+          </p>
+
+          {/* Botón Mi Portafolio (texto negro) */}
+          <div className="flex justify-center mb-8">
+            <Link
+              href="/proyectos"
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all ${
+                darkMode
+                  ? "bg-teal-500 text-black hover:bg-teal-400"
+                  : "bg-teal-600 text-black hover:bg-teal-500"
+              }`}
+            >
+              Mi portafolio
+              <span>→</span>
+            </Link>
+          </div>
+        </section>
+
         {/* Sección "En la web" con línea debajo del título */}
         <section className="mb-12">
-          <h3 className="text-xl font-bold mb-2 inline-block">
+          <h3 className="text-xl font-bold mb-0.5 inline-block">
             En la web
           </h3>
-          {/* Línea decorativa removida según solicitud */}
+          {/* Línea decorativa gris */}
+          <div className={`w-23 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
           <div className="flex items-center gap-4 mt-4">
             {/* GitHub */}
