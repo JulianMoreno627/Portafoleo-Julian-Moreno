@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import { useTheme } from "../components/ThemeProvider";
 
 export default function ServiciosPage() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { darkMode } = useTheme();
 
   const servicios = [
     {
@@ -53,7 +53,7 @@ export default function ServiciosPage() {
       } flex flex-col items-center px-6 py-10 transition-colors duration-300`}
     >
       {/* NAVBAR STICKY (compartida) */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">

@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useTheme } from "../components/ThemeProvider";
 
 export default function ContactoPage() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { darkMode } = useTheme();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -34,7 +35,7 @@ export default function ContactoPage() {
       } flex flex-col items-center px-6 py-10 transition-colors duration-300`}
     >
       {/* NAVBAR STICKY (compartida) */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">

@@ -1,10 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
+import { useTheme } from "./components/ThemeProvider";
 
 // Importar el componente 3D dinámicamente para evitar SSR
 const Model3D = dynamic(() => import("./components/Model3D"), {
@@ -17,7 +17,7 @@ const Model3D = dynamic(() => import("./components/Model3D"), {
 });
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { darkMode } = useTheme();
 
   return (
     <main
@@ -26,7 +26,7 @@ export default function Home() {
       } transition-colors duration-300`}
     >
       {/* NAVBAR STICKY */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       {/* CONTENEDOR PRINCIPAL */}
       <div className="w-full max-w-2xl mx-auto px-6 py-10 mt-16">

@@ -3,13 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
-interface NavbarProps {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-}
-
-export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
+export default function Navbar() {
+  const { darkMode, setDarkMode } = useTheme();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -87,7 +84,15 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         {/* Botón modo claro / oscuro */}
         <button
           aria-label="theme"
-          onClick={() => setDarkMode(!darkMode)}
+          onClick={() => {
+            const next = !darkMode;
+            setDarkMode(next);
+            try {
+              if (typeof window !== "undefined") {
+                localStorage.setItem("theme", next ? "dark" : "light");
+              }
+            } catch {}
+          }}
           className={`w-9 h-9 rounded-md flex items-center justify-center shadow ${
             darkMode
               ? "bg-yellow-200 text-black"
