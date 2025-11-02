@@ -78,7 +78,7 @@ export default function ProyectosPage() {
         darkMode
           ? "bg-gray-900 border border-gray-800"
           : "bg-gray-50 border border-gray-200"
-      } hover:scale-105 transition-all duration-300 hover:shadow-xl`}
+      } transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl ${darkMode ? 'hover:shadow-teal-500/20' : 'hover:shadow-teal-600/30'}`}
     >
       <div className="relative h-48 w-full bg-gray-800">
         <Image
@@ -207,10 +207,10 @@ export default function ProyectosPage() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition ${
+                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition transform hover:scale-105 duration-300 ${
                         darkMode
-                          ? "bg-gray-800 hover:bg-gray-700 text-white"
-                          : "bg-gray-900 hover:bg-gray-800 text-white"
+                          ? "bg-gray-800 hover:bg-gray-700 text-white hover:shadow-md"
+                          : "bg-gray-900 hover:bg-gray-800 text-white hover:shadow-md"
                       }`}
                     >
                       <span className="text-xl">🐙</span>
@@ -221,10 +221,10 @@ export default function ProyectosPage() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition ${
+                      className={`flex items-center justify-center gap-3 w-full py-3 rounded-lg font-semibold transition transform hover:scale-105 duration-300 ${
                         darkMode
-                          ? "bg-cyan-600 hover:bg-cyan-500 text-black"
-                          : "bg-cyan-500 hover:bg-cyan-600 text-white"
+                          ? "bg-cyan-600 hover:bg-cyan-500 text-black hover:shadow-md hover:shadow-cyan-500/30"
+                          : "bg-cyan-500 hover:bg-cyan-600 text-white hover:shadow-md hover:shadow-cyan-500/30"
                       }`}
                     >
                       <span className="text-xl">🚀</span>

@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,56 +29,56 @@ export default function Navbar() {
     >
       <div className="w-full max-w-4xl mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 hover:opacity-80 transition"
+        <div
+          onClick={() => router.push('/')}
+          className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer"
         >
           <span className="text-sm">🐾</span>
           <span className="text-sm font-semibold">Julián Moreno</span>
-        </Link>
+        </div>
 
         {/* Links */}
         <div className="flex gap-6 text-sm items-center">
-          <Link
-            href="/informacion"
-            className={`transition ${
+          <div
+            onClick={() => router.push('/informacion')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
               isActive("/informacion")
                 ? "text-cyan-400"
                 : "hover:text-cyan-400"
             }`}
           >
             Información
-          </Link>
-          <Link
-            href="/proyectos"
-            className={`transition ${
+          </div>
+          <div
+            onClick={() => router.push('/proyectos')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
               isActive("/proyectos")
                 ? "text-cyan-400"
                 : "hover:text-cyan-400"
             }`}
           >
             Proyectos
-          </Link>
-          <Link
-            href="/servicios"
-            className={`transition ${
+          </div>
+          <div
+            onClick={() => router.push('/servicios')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
               isActive("/servicios")
                 ? "text-cyan-400"
                 : "hover:text-cyan-400"
             }`}
           >
             Servicios
-          </Link>
-          <Link
-            href="/contacto"
-            className={`transition ${
+          </div>
+          <div
+            onClick={() => router.push('/contacto')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
               isActive("/contacto")
                 ? "text-cyan-400"
                 : "hover:text-cyan-400"
             }`}
           >
             Contacto
-          </Link>
+          </div>
         </div>
 
         {/* Botón modo claro / oscuro */}
