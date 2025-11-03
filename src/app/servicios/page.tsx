@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import { useTheme } from "../components/ThemeProvider";
 import { useLanguage } from "../components/LanguageProvider";
+import SpotlightCard from "../templates/SpotlightCard";
 
 export default function ServiciosPage() {
   const { darkMode } = useTheme();
@@ -67,20 +68,18 @@ export default function ServiciosPage() {
         {/* Grid de servicios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicios.map((servicio, index) => (
-            <div
+            <SpotlightCard
               key={index}
-              className={`p-6 rounded-xl ${
-                darkMode
-                  ? "bg-gray-900 border border-gray-800 hover:border-cyan-500"
-                  : "bg-gray-50 border border-gray-200 hover:border-cyan-500"
-              } transition-all duration-300 hover:scale-105`}
+              variant={darkMode ? 'dark' : 'light'}
+              spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
+              className="transition-all duration-300 hover:scale-105 hover:border-cyan-500"
             >
               <div className="text-4xl mb-4">{servicio.icono}</div>
               <h3 className="text-xl font-semibold mb-3">{servicio.titulo}</h3>
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                 {servicio.descripcion}
               </p>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
 
