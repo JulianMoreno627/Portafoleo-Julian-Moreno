@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 
 export default function ProyectosPage() {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   const obras = [
@@ -124,8 +126,8 @@ export default function ProyectosPage() {
       <section className="w-full max-w-4xl mt-16">
         {/* OBRAS */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-2">Obras</h2>
-          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-cyan-500" : "bg-cyan-600"}`}></div>
+          <h2 className="text-xl font-bold mb-2">{t('projects.works')}</h2>
+          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {obras.map((project, index) => (
@@ -136,8 +138,8 @@ export default function ProyectosPage() {
 
         {/* COLABORACIONES */}
         <div>
-          <h2 className="text-3xl font-bold mb-2">Colaboraciones</h2>
-          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-cyan-500" : "bg-cyan-600"}`}></div>
+          <h2 className="text-xl font-bold mb-2">{t('projects.collaborations')}</h2>
+          <div className={`h-1 w-38 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {colaboraciones.map((project, index) => (
@@ -214,7 +216,7 @@ export default function ProyectosPage() {
                       }`}
                     >
                       <span className="text-xl">🐙</span>
-                      Ver en GitHub
+                      {t('projects.view.github')}
                     </a>
 
                     <a
@@ -228,7 +230,7 @@ export default function ProyectosPage() {
                       }`}
                     >
                       <span className="text-xl">🚀</span>
-                      Ver Demo en Vivo
+                      {t('projects.view.demo')}
                     </a>
                   </div>
                 </>
@@ -239,7 +241,7 @@ export default function ProyectosPage() {
       )}
 
       <footer className="w-full max-w-4xl mx-auto mt-20 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
+        © {new Date().getFullYear()} Julián Moreno. {t('footer.rights')}
       </footer>
 
       <style jsx>{`

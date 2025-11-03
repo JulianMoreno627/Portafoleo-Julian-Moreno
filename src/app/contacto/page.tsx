@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 
 export default function ContactoPage() {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -16,7 +18,7 @@ export default function ContactoPage() {
     e.preventDefault();
     // Aquí puedes agregar la lógica para enviar el formulario
     console.log("Formulario enviado:", formData);
-    alert("¡Mensaje enviado! Te contactaré pronto.");
+    alert(t('contact.form.success'));
   };
 
   const handleChange = (
@@ -39,11 +41,9 @@ export default function ContactoPage() {
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">
-        <h1 className="text-4xl font-bold mb-4">Contacto</h1>
+        <h1 className="text-4xl font-bold mb-4">{t('contact.title')}</h1>
         <p className={`mb-12 max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-          ¿Tienes un proyecto en mente o simplemente quieres conversar? Me
-          encantaría escucharte. Completa el formulario o contáctame
-          directamente.
+          {t('contact.description')}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -57,7 +57,7 @@ export default function ContactoPage() {
                     darkMode ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  Nombre
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
@@ -71,7 +71,7 @@ export default function ContactoPage() {
                       ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
                       : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
                   } outline-none transition`}
-                  placeholder="Tu nombre"
+                  placeholder={t('contact.form.name.placeholder')}
                 />
               </div>
 
@@ -82,7 +82,7 @@ export default function ContactoPage() {
                     darkMode ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  Email
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -96,7 +96,7 @@ export default function ContactoPage() {
                       ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
                       : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
                   } outline-none transition`}
-                  placeholder="tu@email.com"
+                  placeholder={t('contact.form.email.placeholder')}
                 />
               </div>
 
@@ -107,7 +107,7 @@ export default function ContactoPage() {
                     darkMode ? "text-gray-300" : "text-gray-700"
                   }`}
                 >
-                  Mensaje
+                  {t('contact.form.message')}
                 </label>
                 <textarea
                   id="mensaje"
@@ -121,7 +121,7 @@ export default function ContactoPage() {
                       ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
                       : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
                   } outline-none transition resize-none`}
-                  placeholder="Cuéntame sobre tu proyecto..."
+                  placeholder={t('contact.form.message.placeholder')}
                 />
               </div>
 
@@ -133,7 +133,7 @@ export default function ContactoPage() {
                     : "bg-cyan-600 text-white hover:bg-cyan-500"
                 } font-semibold rounded-lg shadow transition`}
               >
-                Enviar mensaje →
+                {t('contact.form.submit')}
               </button>
             </form>
           </div>
@@ -141,7 +141,7 @@ export default function ContactoPage() {
           {/* Información de contacto */}
           <div>
             <h2 className="text-2xl font-semibold mb-6">
-              Otras formas de contacto
+              {t('contact.other.title')}
             </h2>
 
             <div className="space-y-6">
@@ -154,7 +154,7 @@ export default function ContactoPage() {
               >
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-2xl">📧</span>
-                  <h3 className="font-semibold">Email</h3>
+                  <h3 className="font-semibold">{t('contact.other.email')}</h3>
                 </div>
                 <a
                   href="mailto:julianmoreno@example.com"
@@ -175,7 +175,7 @@ export default function ContactoPage() {
               >
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-2xl">📍</span>
-                  <h3 className="font-semibold">Ubicación</h3>
+                  <h3 className="font-semibold">{t('contact.other.location')}</h3>
                 </div>
                 <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
                   Pasto, Nariño, Colombia
@@ -191,7 +191,7 @@ export default function ContactoPage() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">🔗</span>
-                  <h3 className="font-semibold">Redes sociales</h3>
+                  <h3 className="font-semibold">{t('contact.other.social')}</h3>
                 </div>
                 <div className="flex gap-3">
                   <a
@@ -230,8 +230,7 @@ export default function ContactoPage() {
 
             <div className="mt-8">
               <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                💡 <strong>Tiempo de respuesta:</strong> Normalmente respondo
-                en 24-48 horas hábiles.
+                💡 <strong>{t('contact.response.time')}:</strong> {t('contact.response.description')}
               </p>
             </div>
           </div>

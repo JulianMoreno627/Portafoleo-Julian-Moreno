@@ -2,10 +2,12 @@
 
 import Navbar from '../components/Navbar';
 import { useTheme } from '../components/ThemeProvider';
+import { useLanguage } from '../components/LanguageProvider';
 /* no collapsibles */
 
 export default function InformacionPage() {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <main
@@ -20,21 +22,13 @@ export default function InformacionPage() {
       <div className="w-full max-w-2xl mx-auto px-6 py-10 mt-16">
         {/* SOBRE MÍ */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-2">Sobre mí</h2>
+          <h2 className="text-xl font-bold mb-0.5">{t('about.me.title')}</h2>
           {/* Línea decorativa gris */}
-          <div className={`w-24 h-1 mb-6 ${darkMode ? "bg-gray-600" : "bg-gray-400"}`}></div>
+          <div className={`w-22 h-1 mb-6 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
           <div className="mb-8">
-            <p className={`leading-relaxed text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-              Soy un estudiante de <strong className={darkMode ? "text-white" : "text-black"}>Ingeniería de Software</strong> apasionado 
-              por crear experiencias digitales únicas. Nací en 2005 en la ciudad de Pasto, Colombia, 
-              un lugar que me ha enseñado el valor del trabajo constante y la perseverancia.
-            </p>
-            <p className={`leading-relaxed text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-              Cuando no estoy programando, disfruto entrenar, cocinar, explorar la naturaleza y 
-              pasar tiempo de calidad con mi familia. Creo firmemente en el aprendizaje continuo 
-              y en mantener un equilibrio entre la vida profesional y personal.
-            </p>
+            <p className={`leading-relaxed text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{t('about.me.p1')}</p>
+            <p className={`leading-relaxed text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{t('about.me.p2')}</p>
           </div>
           
           {/* Botón Mi Portafolio */}
@@ -43,11 +37,11 @@ export default function InformacionPage() {
               onClick={() => window.location.href = '/proyectos'}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 cursor-pointer ${
                 darkMode
-                  ? "bg-teal-500 text-black hover:bg-teal-400"
+                  ? "bg-teal-300 text-black hover:bg-teal-400"
                   : "bg-teal-600 text-black hover:bg-teal-500"
               }`}
             >
-              Mi portafolio
+              {t('about.portfolio.button')}
               <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
             </div>
           </div>
@@ -59,29 +53,29 @@ export default function InformacionPage() {
             darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
           }`}>
             <h3 className="text-4xl font-bold mb-2">3+</h3>
-            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>Años de experiencia</p>
+            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.experience')}</p>
           </div>
           
           <div className={`rounded-xl p-6 text-center transition-all duration-300 hover:scale-[1.02] hover:border-teal-500 ${
             darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
           }`}>
             <h3 className="text-4xl font-bold mb-2">15+</h3>
-            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>Proyectos completados</p>
+            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.projects')}</p>
           </div>
           
           <div className={`rounded-xl p-6 text-center transition-all duration-300 hover:scale-[1.02] hover:border-teal-500 ${
             darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
           }`}>
             <h3 className="text-4xl font-bold mb-2">12+</h3>
-            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>Tecnologías dominadas</p>
+            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.tech')}</p>
           </div>
         </div>
 
         {/* HABILIDADES TÉCNICAS */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-2">Habilidades Técnicas</h2>
+          <h2 className="text-xl font-bold mb-2">{t('about.skills.title')}</h2>
           {/* Línea decorativa gris */}
-          <div className={`w-32 h-1 mb-10 ${darkMode ? "bg-gray-600" : "bg-gray-400"}`}></div>
+          <div className={`w-52 h-1 mb-10 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
           <div className="grid grid-cols-1 gap-8">
             {/* Frontend Skills */}
@@ -90,7 +84,7 @@ export default function InformacionPage() {
             } transition-all duration-300 hover:scale-[1.01] hover:border-teal-500`}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="text-3xl text-blue-500">
-                  <span className="font-bold">⚛️ Frontend</span>
+                  <span className="font-bold">⚛️ {t('about.skills.frontend')}</span>
                 </div>
               </div>
               
@@ -169,7 +163,7 @@ export default function InformacionPage() {
             } transition-all duration-300 hover:scale-[1.01] hover:border-teal-500`}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="text-3xl text-blue-500">
-                  <span className="font-bold">🔧 Backend</span>
+                  <span className="font-bold">🔧 {t('about.skills.backend')}</span>
                 </div>
               </div>
               
@@ -246,9 +240,9 @@ export default function InformacionPage() {
 
         {/* HERRAMIENTAS Y OTROS */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-2">Herramientas y Otros</h2>
+          <h2 className="text-xl font-bold mb-2">{t('about.tools.title')}</h2>
           {/* Línea decorativa gris */}
-          <div className={`w-28 h-1 mb-6 ${darkMode ? "bg-gray-600" : "bg-gray-400"}`}></div>
+          <div className={`w-52 h-1 mb-6 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
           <div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 ${
             darkMode ? "text-gray-300" : "text-gray-700"
@@ -283,7 +277,7 @@ export default function InformacionPage() {
 
       {/* FOOTER */}
       <footer className="w-full max-w-2xl mx-auto mt-20 pb-10 text-center text-sm text-gray-500 px-6">
-        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
+        © {new Date().getFullYear()} Julián Moreno. {t('footer.rights')}
       </footer>
     </main>
   );

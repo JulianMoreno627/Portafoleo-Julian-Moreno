@@ -3,9 +3,11 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Navbar() {
   const { darkMode, setDarkMode } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,8 +35,7 @@ export default function Navbar() {
           onClick={() => router.push('/')}
           className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer"
         >
-          <span className="text-sm">🐾</span>
-          <span className="text-sm font-semibold">Julián Moreno</span>
+        <span className="text-sm font-semibold">Julián Moreno</span>
         </div>
 
         {/* Links */}
@@ -47,7 +48,7 @@ export default function Navbar() {
                 : "hover:text-cyan-400"
             }`}
           >
-            Información
+            {t('nav.about')}
           </div>
           <div
             onClick={() => router.push('/proyectos')}
@@ -57,7 +58,7 @@ export default function Navbar() {
                 : "hover:text-cyan-400"
             }`}
           >
-            Proyectos
+            {t('nav.projects')}
           </div>
           <div
             onClick={() => router.push('/servicios')}
@@ -67,7 +68,7 @@ export default function Navbar() {
                 : "hover:text-cyan-400"
             }`}
           >
-            Servicios
+            {t('nav.services')}
           </div>
           <div
             onClick={() => router.push('/contacto')}
@@ -77,12 +78,27 @@ export default function Navbar() {
                 : "hover:text-cyan-400"
             }`}
           >
-            Contacto
+            {t('nav.contact')}
           </div>
         </div>
 
-        {/* Botón modo claro / oscuro */}
-        <button
+        {/* Controles: Idioma y Tema */}
+        <div className="flex items-center gap-2">
+          {/* Botón cambio de idioma */}
+          <button
+            aria-label="language"
+            onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+            className={`w-9 h-9 rounded-md flex items-center justify-center shadow text-xs font-semibold ${
+              darkMode
+                ? "bg-blue-200 text-black hover:bg-blue-300"
+                : "bg-blue-600 text-white hover:bg-blue-700"
+            } transition`}
+          >
+            {language === 'es' ? 'EN' : 'ES'}
+          </button>
+
+          {/* Botón modo claro / oscuro */}
+          <button
           aria-label="theme"
           onClick={() => {
             const next = !darkMode;
@@ -99,8 +115,9 @@ export default function Navbar() {
               : "bg-gray-800 text-yellow-200"
           } transition`}
         >
-          {darkMode ? "☀" : "🌙"}
-        </button>
+            {darkMode ? "☀" : "🌙"}
+          </button>
+        </div>
       </div>
     </nav>
   );

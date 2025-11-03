@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import { useTheme } from "../components/ThemeProvider";
+import { useLanguage } from "../components/LanguageProvider";
 
 export default function ServiciosPage() {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   const servicios = [
     {
@@ -57,11 +59,9 @@ export default function ServiciosPage() {
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">
-        <h1 className="text-4xl font-bold mb-4">Servicios</h1>
+        <h1 className="text-4xl font-bold mb-4">{t('services.title')}</h1>
         <p className={`mb-12 max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-          Ofrezco soluciones completas de desarrollo web y móvil, desde el
-          concepto inicial hasta el despliegue final. Trabajo con empresas y
-          emprendedores para dar vida a sus ideas digitales.
+          {t('services.description')}
         </p>
 
         {/* Grid de servicios */}
@@ -86,7 +86,7 @@ export default function ServiciosPage() {
 
         {/* Proceso de trabajo */}
         <div className="mt-20">
-          <h2 className="text-3xl font-bold mb-8">Mi proceso de trabajo</h2>
+          <h2 className="text-3xl font-bold mb-8">{t('services.process.title')}</h2>
           <div className="space-y-6">
             <div className="flex gap-4">
               <div
@@ -99,9 +99,9 @@ export default function ServiciosPage() {
                 1
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Consulta inicial</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('services.process.step1.title')}</h3>
                 <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  Conversamos sobre tu proyecto, objetivos y necesidades específicas.
+                  {t('services.process.step1.description')}
                 </p>
               </div>
             </div>
@@ -117,9 +117,9 @@ export default function ServiciosPage() {
                 2
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Planificación</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('services.process.step2.title')}</h3>
                 <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  Defino arquitectura, tecnologías y cronograma del proyecto.
+                  {t('services.process.step2.description')}
                 </p>
               </div>
             </div>
@@ -135,9 +135,9 @@ export default function ServiciosPage() {
                 3
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Desarrollo</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('services.process.step3.title')}</h3>
                 <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  Implemento la solución con actualizaciones constantes.
+                  {t('services.process.step3.description')}
                 </p>
               </div>
             </div>
@@ -153,9 +153,9 @@ export default function ServiciosPage() {
                 4
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Entrega y soporte</h3>
+                <h3 className="text-xl font-semibold mb-2">{t('services.process.step4.title')}</h3>
                 <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  Despliegue del proyecto y soporte post-lanzamiento.
+                  {t('services.process.step4.description')}
                 </p>
               </div>
             </div>
@@ -164,9 +164,9 @@ export default function ServiciosPage() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold mb-4">¿Listo para comenzar?</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
           <p className={`mb-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-            Conversemos sobre tu proyecto y cómo puedo ayudarte a alcanzar tus objetivos.
+            {t('services.cta.description')}
           </p>
           <Link
             href="/contacto"
@@ -176,13 +176,13 @@ export default function ServiciosPage() {
                 : "bg-cyan-600 text-white hover:bg-cyan-500"
             } font-semibold rounded-md shadow transition`}
           >
-            Contactar ahora →
+            {t('services.cta.button')}
           </Link>
         </div>
       </section>
 
       <footer className="w-full max-w-4xl mx-auto mt-20 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
+        © {new Date().getFullYear()} Julián Moreno. {t('footer.rights')}
       </footer>
     </main>
   );

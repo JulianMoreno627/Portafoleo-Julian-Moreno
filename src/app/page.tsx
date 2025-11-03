@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import { useTheme } from "./components/ThemeProvider";
+import { useLanguage } from "./components/LanguageProvider";
 
 // Importar el componente 3D dinámicamente para evitar SSR
 const Model3D = dynamic(() => import("./components/Model3D"), {
@@ -17,6 +18,7 @@ const Model3D = dynamic(() => import("./components/Model3D"), {
 
 export default function Home() {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <main
@@ -40,11 +42,11 @@ export default function Home() {
         <div className="flex justify-center mb-8">
           <div className={`inline-block px-6 py-3 rounded-lg ${
             darkMode 
-              ? "bg-neutral-800 backdrop-blur-sm" 
-              : "bg-gray-200/60 backdrop-blur-sm"
+              ? "bg-neutral-800 border border-neutral-700" 
+              : "bg-gray-50 border border-gray-200"
           }`}>
-            <p className="text-sm text-center">
-              ¡Hola, soy un desarrollador independiente en Colombia!
+            <p className={`text-sm text-center ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+              {t('home.welcome')}
             </p>
           </div>
         </div>
@@ -53,12 +55,12 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-start gap-4 mb-10">
           {/* Info del perfil */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl font-bold mb-3">Julián Moreno</h1>
-            <p className={`text-base text-white`}>
-              Desarrollador Full Stack & Diseñador
+            <h1 className="text-4xl font-bold mb-3">{t('home.name')}</h1>
+            <p className={`text-base ${darkMode ? "text-white" : "text-black"}`}>
+              {t('home.title')}
             </p>
             <p className={`text-sm mt-2 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-              💼 Freelancer · 🎓 Ingeniería de Software
+              {t('home.subtitle')}
             </p>
           </div>
 
@@ -79,18 +81,15 @@ export default function Home() {
         {/* Sección Trabajo */}
         <section className="mb-12">
           <h3 className="text-xl font-bold mb-0.5 inline-block">
-            Trabajo
+            {t('home.work')}
           </h3>
           {/* Línea decorativa gris */}
           <div className={`w-19 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
-          <p className={`leading-relaxed mb-6 ${
+          <p className={`leading-relaxed mb-6 max-w-2xl mx-auto px-4 ${
             darkMode ? "text-gray-300" : "text-gray-700"
           }`}>
-            Soy una persona creativa e intuitiva, con una gran curiosidad por aprender y explorar nuevas ideas.
-            Mi enfoque principal está en el desarrollo web y móvil full stack, donde combino creatividad y lógica
-            para construir interfaces atractivas y sistemas escalables. Me apasiona transformar ideas en soluciones
-            digitales funcionales que generen experiencias útiles y significativas para las personas.
+            {t('home.work.description')}
           </p>
           {/* Botón Descargar CV (texto negro) */}
           <div className="flex justify-center mb-8">
@@ -99,11 +98,11 @@ export default function Home() {
               download
               className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 ${
                 darkMode
-                  ? "bg-teal-500 text-black hover:bg-teal-400"
-                  : "bg-teal-600 text-black hover:bg-teal-500"
+                  ? "bg-teal-300 text-black hover:bg-teal-400"
+                  : "bg-teal-600 text-white hover:bg-teal-500"
               }`}
             >
-              Descargar CV
+              {t('home.download.cv')}
               <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
@@ -111,14 +110,14 @@ export default function Home() {
 
         {/* Sección Educación */}
         <section className="mb-12">
-          <h3 className="text-xl font-bold mb-0.5 inline-block">Bio</h3>
+          <h3 className="text-xl font-bold mb-0.5 inline-block">{t('home.bio')}</h3>
           {/* Línea decorativa gris */}
-          <div className={`w-20 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
+          <div className={`w-9 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
           
-          <div className="mb-4">
+          <div className="mb-8">
             <div className="flex mt-2">
               <span className="font-bold w-24">2023-2027</span>
-              <span>Ingeniería de software - Universidad Cooperativa de Colombia</span>
+              <span>{t('home.bio.education')}</span>
             </div>
           </div>
 
@@ -128,11 +127,11 @@ export default function Home() {
               onClick={() => window.location.href = '/contacto'}
               className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 cursor-pointer ${
                 darkMode
-                  ? "bg-teal-500 text-black hover:bg-teal-400"
-                  : "bg-teal-600 text-black hover:bg-teal-500"
+                  ? "bg-teal-300 text-black hover:bg-teal-400"
+                  : "bg-teal-600 text-white hover:bg-teal-500"
               }`}
             >
-              Contáctame
+              {t('home.contact.me')}
               <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
             </div>
           </div>
@@ -141,7 +140,7 @@ export default function Home() {
         {/* Sección "En la web" con línea debajo del título */}
         <section className="mb-12">
           <h3 className="text-xl font-bold mb-0.5 inline-block">
-            En la web
+            {t('home.on.web')}
           </h3>
           {/* Línea decorativa gris */}
           <div className={`w-23 h-1 mb-3 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
@@ -200,7 +199,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="w-full max-w-4xl mx-auto mt-20 pb-10 text-center text-sm text-gray-500 px-6">
-        © {new Date().getFullYear()} Julián Moreno. Todos los derechos reservados.
+        © {new Date().getFullYear()} Julián Moreno. {t('footer.rights')}
       </footer>
     </main>
   );
