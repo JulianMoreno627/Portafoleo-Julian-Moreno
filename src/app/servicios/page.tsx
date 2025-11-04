@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "../components/Navbar";
-import { useTheme } from "../components/ThemeProvider";
-import { useLanguage } from "../components/LanguageProvider";
+import Navbar from "@/components/Navbar";
+import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 import SpotlightCard from "../templates/SpotlightCard";
 
 export default function ServiciosPage() {

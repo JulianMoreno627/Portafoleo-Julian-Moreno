@@ -3,10 +3,11 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "./ThemeProvider";
+import ClientOnlyThemeButton from "./ClientOnlyThemeButton";
 import { useLanguage } from "./LanguageProvider";
 
 export default function Navbar() {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
@@ -97,26 +98,8 @@ export default function Navbar() {
             {language === 'es' ? 'EN' : 'ES'}
           </button>
 
-          {/* Botón modo claro / oscuro */}
-          <button
-          aria-label="theme"
-          onClick={() => {
-            const next = !darkMode;
-            setDarkMode(next);
-            try {
-              if (typeof window !== "undefined") {
-                localStorage.setItem("theme", next ? "dark" : "light");
-              }
-            } catch {}
-          }}
-          className={`w-9 h-9 rounded-md flex items-center justify-center shadow ${
-            darkMode
-              ? "bg-yellow-200 text-black"
-              : "bg-gray-800 text-yellow-200"
-          } transition`}
-        >
-            {darkMode ? "☀" : "🌙"}
-          </button>
+          {/* Botón modo claro / oscuro animado */}
+          <ClientOnlyThemeButton />
         </div>
       </div>
     </nav>

@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import { useTheme } from "../components/ThemeProvider";
-import { useLanguage } from "../components/LanguageProvider";
+import Navbar from "@/components/Navbar";
+import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function ProyectosPage() {
   const { darkMode } = useTheme();

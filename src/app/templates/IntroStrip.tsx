@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "../components/ThemeProvider";
-import { useLanguage } from "../components/LanguageProvider";
+import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function IntroStrip() {
   const { darkMode } = useTheme();
