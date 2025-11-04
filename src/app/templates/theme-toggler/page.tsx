@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ThemeTogglerButtonDemo from './ThemeTogglerButtonDemo';
-import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons/theme-toggler';
+import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons';
 
 export const metadata: Metadata = {
   title: 'Template · Theme Toggler',
@@ -23,7 +23,7 @@ export default function ThemeTogglerTemplatePage() {
         <div className="flex items-center gap-4">
           <ThemeTogglerButtonDemo variant="default" size="default" direction="ltr" system={false} />
           <ThemeTogglerButtonDemo variant="secondary" size="default" direction="rtl" system={false} />
-          <ThemeTogglerButtonDemo variant="ghost" size="icon" direction="ttb" system={false} />
+          <ThemeTogglerButtonDemo variant="ghost" size="sm" direction="ttb" system={false} />
         </div>
         <span className="text-sm opacity-70">Variantes y dirección de la animación</span>
       </div>

@@ -3,7 +3,7 @@
 import {
   ThemeTogglerButton,
   type ThemeTogglerButtonProps,
-} from '@/components/animate-ui/components/buttons/theme-toggler';
+} from '@/components/animate-ui/components/buttons';
 
 interface ThemeTogglerButtonDemoProps {
   variant: ThemeTogglerButtonProps['variant'];

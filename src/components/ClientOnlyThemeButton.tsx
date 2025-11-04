@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
+import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons";
 import { useTheme } from "./ThemeProvider";
 
 export default function ClientOnlyThemeButton() {
