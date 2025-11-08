@@ -1,13 +1,31 @@
 "use client";
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { useTheme } from '@/components/ThemeProvider';
 import { useLanguage } from '@/components/LanguageProvider';
-/* no collapsibles */
 
 export default function InformacionPage() {
   const { darkMode } = useTheme();
   const { t } = useLanguage();
+
+  const frontendSkills = [
+    { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: 'text-orange-500' },
+    { name: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', color: 'text-blue-500' },
+    { name: 'SCSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg', color: 'text-pink-500' },
+    { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', color: 'text-yellow-500' },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: 'text-blue-600' },
+    { name: 'Tailwind', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', color: 'text-cyan-500' }
+  ];
+
+  const backendSkills = [
+    { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: 'text-green-500' },
+    { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: 'text-blue-500' },
+    { name: 'Java', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', color: 'text-orange-600' },
+    { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: 'text-green-600' },
+    { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', color: 'text-blue-600' },
+    { name: 'APIs', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg', color: 'text-purple-500' }
+  ];
 
   return (
     <main
@@ -19,269 +37,135 @@ export default function InformacionPage() {
       <Navbar />
 
       {/* CONTENIDO */}
-      <div className="w-full max-w-2xl mx-auto px-6 py-10 mt-16">
+      <div className="w-full max-w-4xl mx-auto px-6 py-10 mt-16">
         {/* SOBRE MÍ */}
-        <section className="mb-16 text-center">
-          <h2 className="text-2xl font-bold mb-1">{t('about.me.title')}</h2>
-          {/* Línea decorativa gris pegada */}
-          <div className={`w-16 h-0.5 mx-auto mb-8 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
-          
-          <div className="mb-8 max-w-3xl mx-auto">
-            <p className={`leading-relaxed text-lg mb-4 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{t('about.me.p1')}</p>
-            <p className={`leading-relaxed text-lg ${darkMode ? "text-gray-300" : "text-gray-700"}`}>{t('about.me.p2')}</p>
+        <section className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-8 items-start">
+            {/* Columna izquierda - Texto */}
+            <div className="space-y-6">
+              <div>
+                <h2 className={`text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  {t('about.me.title')}
+                </h2>
+              </div>
+
+              <div className="lg:max-w-[29rem]">
+                <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  {t('about.me.p1')}
+                </p>
+              </div>
+
+              {/* Nuevo párrafo aspiracional, alineado y con espacio inferior */}
+              <div className="lg:max-w-[29rem] mt-4">
+                <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  {t('about.me.p1b')}
+                </p>
+              </div>
+            </div>
+
+            {/* Columna derecha - Espacio para imagen */}
+            <div className="flex justify-center items-start lg:justify-end">
+              <div className={`w-80 h-80 rounded-2xl overflow-hidden lg:-mt-80 ${
+                darkMode ? 'bg-gray-800' : 'bg-gray-200'
+              }`}>
+                <img src="/images/info.jpeg" alt="Foto de información" className="w-110 h-115 object-cover" />
+              </div>
+            </div>
           </div>
-          
-          {/* Botón Mi Portafolio */}
-          <div className="flex justify-center mb-12">
-            <div
+
+          {/* Párrafo extendido que ocupa todo el ancho */}
+          <div className="mt-12">
+            <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              {t('about.me.p2')}
+            </p>
+          </div>
+
+          {/* Botón Mi Portafolio alineado a la izquierda */}
+          <div className="mt-8">
+            <button
               onClick={() => window.location.href = '/proyectos'}
-              className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.03] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-teal-500/30 cursor-pointer ${
+              className={`px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                 darkMode
-                  ? "bg-teal-300 text-black hover:bg-teal-400"
-                  : "bg-teal-600 text-white hover:bg-teal-500"
+                  ? 'bg-purple-600 hover:bg-purple-700'
+                  : 'bg-purple-600 hover:bg-purple-700'
               }`}
             >
               {t('about.portfolio.button')}
-            </div>
+            </button>
           </div>
         </section>
 
-        {/* ESTADÍSTICAS */}
-        <div className="flex justify-center mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl">
-            <div className={`rounded-xl p-6 text-center transition-all duration-300 hover:scale-[1.02] hover:border-teal-500 ${
-              darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
-            }`}>
-              <h3 className="text-4xl font-bold mb-2">3+</h3>
-              <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.experience')}</p>
-            </div>
-            
-            <div className={`rounded-xl p-6 text-center transition-all duration-300 hover:scale-[1.02] hover:border-teal-500 ${
-              darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
-            }`}>
-              <h3 className="text-4xl font-bold mb-2">15+</h3>
-              <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.projects')}</p>
-            </div>
-            
-            <div className={`rounded-xl p-6 text-center transition-all duration-300 hover:scale-[1.02] hover:border-teal-500 ${
-              darkMode ? "bg-gray-900/50 border border-gray-800" : "bg-gray-50 border border-gray-200"
-            }`}>
-              <h3 className="text-4xl font-bold mb-2">12+</h3>
-              <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>{t('about.stats.tech')}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* HABILIDADES TÉCNICAS */}
-        <section className="mb-16 text-center">
-          <h2 className="text-2xl font-bold mb-1">{t('about.skills.title')}</h2>
-          {/* Línea decorativa gris pegada */}
-          <div className={`w-20 h-0.5 mx-auto mb-10 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
-          
-          <div className="grid grid-cols-1 gap-8">
-            {/* Frontend Skills - Diseño Minimalista */}
-            <div className={`rounded-xl p-6 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
-            } transition-all duration-300 hover:scale-[1.01] hover:border-teal-500`}>
-              <div className="flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <div className="text-2xl mb-2">🎨</div>
-                  <h3 className="text-lg font-semibold text-blue-500">{t('about.skills.frontend')}</h3>
-                  <div className={`w-16 h-0.5 mx-auto mt-2 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">📄</span>
-                    <span className="text-sm font-medium">HTML</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🎨</span>
-                    <span className="text-sm font-medium">CSS</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🎭</span>
-                    <span className="text-sm font-medium">SCSS</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-yellow-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-yellow-500 text-lg">⚡</span>
-                    <span className="text-sm font-medium">JavaScript</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🔷</span>
-                    <span className="text-sm font-medium">TypeScript</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-cyan-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-cyan-500 text-lg">🎯</span>
-                    <span className="text-sm font-medium">Tailwind</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-green-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-green-500 text-lg">⚛️</span>
-                    <span className="text-sm font-medium">React</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🌀</span>
-                    <span className="text-sm font-medium">Next.js</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-purple-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-purple-500 text-lg">📱</span>
-                    <span className="text-sm font-medium">React Native</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Backend Skills */}
-            <div className={`rounded-xl p-6 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
-            } transition-all duration-300 hover:scale-[1.01] hover:border-teal-500`}>
-              <div className="flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <div className="text-2xl mb-2">🔧</div>
-                  <h3 className="text-lg font-semibold text-blue-500">{t('about.skills.backend')}</h3>
-                  <div className={`w-16 h-0.5 mx-auto mt-2 ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-green-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-green-500 text-lg">🟢</span>
-                    <span className="text-sm font-medium">Node.js</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🐍</span>
-                    <span className="text-sm font-medium">Python</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-orange-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-orange-500 text-lg">☕</span>
-                    <span className="text-sm font-medium">Java</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-green-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-green-500 text-lg">🍃</span>
-                    <span className="text-sm font-medium">MongoDB</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-blue-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-blue-500 text-lg">🗄️</span>
-                    <span className="text-sm font-medium">MySQL</span>
-                  </div>
-                </div>
-                
-                <div className={`p-3 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
-                  darkMode ? "bg-gray-800/50 hover:bg-gray-700/50" : "bg-white/70 hover:bg-white"
-                } backdrop-blur-sm border border-transparent hover:border-purple-300`}>
-                  <div className="flex flex-col items-center gap-2 text-center">
-                    <span className="text-purple-500 text-lg">🔗</span>
-                    <span className="text-sm font-medium">APIs</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* HERRAMIENTAS Y OTROS */}
+        {/* HABILIDADES TÉCNICAS - DISEÑO COMO LA IMAGEN */}
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-xl font-bold mb-2">{t('about.tools.title')}</h2>
-            <div className={`w-24 h-0.5 mx-auto ${darkMode ? "bg-neutral-600" : "bg-gray-400"}`}></div>
+          <div className="mb-10">
+            <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              {t('about.skills.title')}
+            </h2>
           </div>
           
-          <div className={`grid grid-cols-2 sm:grid-cols-4 gap-3 ${
-            darkMode ? "text-gray-300" : "text-gray-700"
-          }`}>
-            <div className={`p-4 rounded-lg text-center transition-all duration-300 hover:scale-[1.01] hover:border-teal-500 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* FRONTEND */}
+            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg ${
+              darkMode 
+                ? "bg-[#2a2d3a] border border-gray-700" 
+                : "bg-[#e8e9ed] border border-gray-300"
             }`}>
-              <div className="text-2xl mb-2">⚡</div>
-              <div className="text-sm font-medium">VS Code</div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className={`text-2xl ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>⚙️</div>
+                <h3 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                  Frontend
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {frontendSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:scale-105 ${
+                      darkMode 
+                        ? "bg-[#1e2028] hover:bg-[#252830]" 
+                        : "bg-white hover:bg-gray-50"
+                    }`}
+                  >
+                    <img src={skill.logo} alt={skill.name} className="w-6 h-6" />
+                    <span className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-            
-            <div className={`p-4 rounded-lg text-center transition-all duration-300 hover:scale-[1.01] hover:border-teal-500 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
+
+            {/* BACKEND */}
+            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg ${
+              darkMode 
+                ? "bg-[#2a2d3a] border border-gray-700" 
+                : "bg-[#e8e9ed] border border-gray-300"
             }`}>
-              <div className="text-2xl mb-2">🌿</div>
-              <div className="text-sm font-medium">Git</div>
-            </div>
-            
-            <div className={`p-4 rounded-lg text-center transition-all duration-300 hover:scale-[1.01] hover:border-teal-500 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
-            }`}>
-              <div className="text-2xl mb-2">🐙</div>
-              <div className="text-sm font-medium">GitHub</div>
-            </div>
-            
-            <div className={`p-4 rounded-lg text-center transition-all duration-300 hover:scale-[1.01] hover:border-teal-500 ${
-              darkMode ? "bg-[#1a1b26] border border-gray-800" : "bg-white border border-gray-200"
-            }`}>
-              <div className="text-2xl mb-2">🚀</div>
-              <div className="text-sm font-medium">Vercel</div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className={`text-2xl ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>dj</div>
+                <h3 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                  Backend
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {backendSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:scale-105 ${
+                      darkMode 
+                        ? "bg-[#1e2028] hover:bg-[#252830]" 
+                        : "bg-white hover:bg-gray-50"
+                    }`}
+                  >
+                    <img src={skill.logo} alt={skill.name} className="w-6 h-6" />
+                    <span className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
