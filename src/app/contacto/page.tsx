@@ -157,12 +157,12 @@ export default function ContactoPage() {
                   <h3 className="font-semibold">{t('contact.other.email')}</h3>
                 </div>
                 <a
-                  href="mailto:julianmoreno@example.com"
+                  href="mailto:morenootayaj@gmail.com"
                   className={`${
                     darkMode ? "text-cyan-400" : "text-cyan-600"
                   } hover:underline`}
                 >
-                  julianmoreno@example.com
+                  morenootayaj@gmail.com
                 </a>
               </div>
 

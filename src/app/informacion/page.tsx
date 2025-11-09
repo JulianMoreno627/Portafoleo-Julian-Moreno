@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import Image from 'next/image';
+import { Download } from "lucide-react";
 import Navbar from '@/components/Navbar';
 import { useTheme } from '@/components/ThemeProvider';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -38,69 +39,71 @@ export default function InformacionPage() {
 
       {/* CONTENIDO */}
       <div className="w-full max-w-4xl mx-auto px-6 py-10 mt-16">
-        {/* SOBRE MÍ */}
-        <section className="mb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-8 items-start">
-            {/* Columna izquierda - Texto */}
-            <div className="space-y-6">
-              <div>
-                <h2 className={`text-4xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  {t('about.me.title')}
-                </h2>
-              </div>
+        {/* SOBRE MÍ (ajustado según solicitud) */}
+        <section className="mb-24">
+          {/* Encabezado alineado a la izquierda y sin "Resumen" */}
+          <div className="mb-8">
+            <h1 className={`text-4xl md:text-3xl font-extrabold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('about.me.title')}</h1>
+            <div className={`h-1 w-35 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+          </div>
 
-              <div className="lg:max-w-[29rem]">
-                <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Columna izquierda - Imagen */}
+            <div className="flex justify-center lg:justify-start">
+              <div className={`relative w-90 h-125 rounded-2xl overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                <Image
+                  src="/images/info.jpeg"
+                  alt="Foto de información"
+                  fill
+                  sizes="(min-width: 1024px) 20rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Columna derecha - Texto */}
+            <div className="space-y-6">
+              <h4 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-cyan-700'}`}>Yo soy Julián Moreno</h4>
+
+              <div className="lg:max-w-[60ch]">
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
                   {t('about.me.p1')}
                 </p>
               </div>
-
-              {/* Nuevo párrafo aspiracional, alineado y con espacio inferior */}
-              <div className="lg:max-w-[29rem] mt-4">
-                <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              <div className="lg:max-w-[60ch]">
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
                   {t('about.me.p1b')}
                 </p>
               </div>
-            </div>
+              <div className="lg:max-w-[60ch]">
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
+                  {t('about.me.p2')}
+                </p>
+              </div>
 
-            {/* Columna derecha - Espacio para imagen */}
-            <div className="flex justify-center items-start lg:justify-end">
-              <div className={`w-80 h-80 rounded-2xl overflow-hidden lg:-mt-80 ${
-                darkMode ? 'bg-gray-800' : 'bg-gray-200'
-              }`}>
-                <img src="/images/info.jpeg" alt="Foto de información" className="w-110 h-115 object-cover" />
+              {/* Botón Descargar CV */}
+              <div className="pt-2">
+                <a
+                  href="/proyectos"
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition transform hover:scale-[1.03] ${
+                    darkMode ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                  }`}
+                >
+                  <span>Mi portafolio</span>
+                  <Download className="w-5 h-5" />
+                </a>
               </div>
             </div>
-          </div>
-
-          {/* Párrafo extendido que ocupa todo el ancho */}
-          <div className="mt-12">
-            <p className={`leading-relaxed text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              {t('about.me.p2')}
-            </p>
-          </div>
-
-          {/* Botón Mi Portafolio alineado a la izquierda */}
-          <div className="mt-8">
-            <button
-              onClick={() => window.location.href = '/proyectos'}
-              className={`px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                darkMode
-                  ? 'bg-purple-600 hover:bg-purple-700'
-                  : 'bg-purple-600 hover:bg-purple-700'
-              }`}
-            >
-              {t('about.portfolio.button')}
-            </button>
           </div>
         </section>
 
         {/* HABILIDADES TÉCNICAS - DISEÑO COMO LA IMAGEN */}
         <section className="mb-16">
           <div className="mb-10">
-            <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('about.skills.title')}
             </h2>
+            <div className={`h-1 w-82 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -127,7 +130,7 @@ export default function InformacionPage() {
                         : "bg-white hover:bg-gray-50"
                     }`}
                   >
-                    <img src={skill.logo} alt={skill.name} className="w-6 h-6" />
+                    <Image src={skill.logo} alt={skill.name} width={24} height={24} />
                     <span className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                       {skill.name}
                     </span>
@@ -159,7 +162,7 @@ export default function InformacionPage() {
                         : "bg-white hover:bg-gray-50"
                     }`}
                   >
-                    <img src={skill.logo} alt={skill.name} className="w-6 h-6" />
+                    <Image src={skill.logo} alt={skill.name} width={24} height={24} />
                     <span className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                       {skill.name}
                     </span>

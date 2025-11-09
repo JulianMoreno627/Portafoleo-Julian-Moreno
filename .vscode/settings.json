@@ -1,0 +1,11 @@
+{
+  // Silencia advertencias del analizador CSS que no entiende Tailwind v4
+  "css.lint.unknownAtRules": "ignore",
+  // Mejora soporte de Tailwind en el editor
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.validate": true,
+  // Asegura que se cargue Tailwind IntelliSense en archivos CSS
+  "files.associations": {
+    "*.css": "css"
+  }
+}

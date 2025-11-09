@@ -5,47 +5,60 @@ import Navbar from "@/components/Navbar";
 import { useTheme } from "@/components/ThemeProvider";
 import { useLanguage } from "@/components/LanguageProvider";
 import SpotlightCard from "../templates/SpotlightCard";
+import CodeIcon from '@mui/icons-material/Code';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import SpeedIcon from '@mui/icons-material/Speed';
+import StorageIcon from '@mui/icons-material/Storage';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import type { ReactNode } from 'react';
 
 export default function ServiciosPage() {
   const { darkMode } = useTheme();
   const { t } = useLanguage();
 
-  const servicios = [
+  type Servicio = {
+    icono: ReactNode;
+    titulo: string;
+    descripcion: string;
+  };
+
+  const servicios: Servicio[] = [
     {
-      icono: "💻",
+      icono: <CodeIcon />,
       titulo: "Desarrollo Web",
       descripcion:
-        "Creación de sitios web modernos y responsivos usando las últimas tecnologías como React, Next.js y Tailwind CSS.",
+        "Sitios modernos y responsivos con React, Next.js y Tailwind.",
     },
     {
-      icono: "📱",
+      icono: <PhoneIphoneIcon />,
       titulo: "Aplicaciones Móviles",
       descripcion:
-        "Desarrollo de aplicaciones móviles nativas y multiplataforma con experiencias de usuario excepcionales.",
+        "Apps nativas y multiplataforma con excelente experiencia de usuario.",
     },
     {
-      icono: "🎨",
+      icono: <DesignServicesIcon />,
       titulo: "Diseño UI/UX",
       descripcion:
-        "Diseño de interfaces intuitivas y atractivas que mejoran la experiencia del usuario y la conversión.",
+        "Interfaces intuitivas y atractivas que mejoran la conversión.",
     },
     {
-      icono: "⚡",
+      icono: <SpeedIcon />,
       titulo: "Optimización",
       descripcion:
-        "Mejora del rendimiento de aplicaciones existentes, optimización SEO y experiencia del usuario.",
+        "Mejora de rendimiento, SEO y experiencia del usuario.",
     },
     {
-      icono: "🔧",
+      icono: <StorageIcon />,
       titulo: "Backend y APIs",
       descripcion:
-        "Desarrollo de APIs robustas y escalables con Node.js, Python y bases de datos SQL/NoSQL.",
+        "APIs robustas y escalables con Node.js, Python y SQL/NoSQL.",
     },
     {
-      icono: "🚀",
+      icono: <SupportAgentIcon />,
       titulo: "Consultoría",
       descripcion:
-        "Asesoramiento técnico para proyectos, arquitectura de software y selección de tecnologías.",
+        "Asesoría técnica en arquitectura y elección de tecnologías.",
     },
   ];
 
@@ -60,7 +73,8 @@ export default function ServiciosPage() {
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">
-        <h1 className="text-4xl font-bold mb-4">{t('services.title')}</h1>
+        <h1 className="text-3xl font-bold mb-1">{t('services.title')}</h1>
+        <div className="h-1 w-36 mb-8 bg-neutral-600"></div>
         <p className={`mb-12 max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
           {t('services.description')}
         </p>
@@ -72,97 +86,27 @@ export default function ServiciosPage() {
               key={index}
               variant={darkMode ? 'dark' : 'light'}
               spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
-              className="transition-all duration-300 hover:scale-105 hover:border-cyan-500"
+              className="group transition-all duration-300 hover:scale-105 hover:border-cyan-500"
             >
-              <div className="text-4xl mb-4">{servicio.icono}</div>
-              <h3 className="text-xl font-semibold mb-3">{servicio.titulo}</h3>
-              <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <div
+                className={`relative w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-300'}`}
+              >
+                <div className={`${darkMode ? 'text-white' : 'text-black'} text-3xl drop-shadow-sm`}>
+                  {servicio.icono}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{servicio.titulo}</h3>
+              <p
+                className={`text-xs md:text-sm leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}
+              >
                 {servicio.descripcion}
               </p>
             </SpotlightCard>
           ))}
         </div>
 
-        {/* Proceso de trabajo */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-bold mb-8">{t('services.process.title')}</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div
-                className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                  darkMode
-                    ? "bg-cyan-900/30 text-cyan-400"
-                    : "bg-cyan-100 text-cyan-700"
-                }`}
-              >
-                1
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{t('services.process.step1.title')}</h3>
-                <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  {t('services.process.step1.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div
-                className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                  darkMode
-                    ? "bg-cyan-900/30 text-cyan-400"
-                    : "bg-cyan-100 text-cyan-700"
-                }`}
-              >
-                2
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{t('services.process.step2.title')}</h3>
-                <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  {t('services.process.step2.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div
-                className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                  darkMode
-                    ? "bg-cyan-900/30 text-cyan-400"
-                    : "bg-cyan-100 text-cyan-700"
-                }`}
-              >
-                3
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{t('services.process.step3.title')}</h3>
-                <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  {t('services.process.step3.description')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div
-                className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                  darkMode
-                    ? "bg-cyan-900/30 text-cyan-400"
-                    : "bg-cyan-100 text-cyan-700"
-                }`}
-              >
-                4
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{t('services.process.step4.title')}</h3>
-                <p className={darkMode ? "text-gray-400" : "text-gray-600"}>
-                  {t('services.process.step4.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 text-center">
+        {/* CTA arriba (reubicado) */}
+        <div className="mt-20 text-center">
           <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
           <p className={`mb-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             {t('services.cta.description')}
@@ -178,6 +122,8 @@ export default function ServiciosPage() {
             {t('services.cta.button')}
           </Link>
         </div>
+
+        {/* CTA inferior eliminado para evitar duplicado */}
       </section>
 
       <footer className="w-full max-w-4xl mx-auto mt-20 text-center text-sm text-gray-500">

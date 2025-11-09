@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 import { ThemeLoader } from "@/components/ThemeLoader";
 import { LanguageProvider } from "@/components/LanguageProvider";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Julián Moreno - Developer & Designer",
@@ -20,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <NextThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ThemeProvider>
             <LanguageProvider>

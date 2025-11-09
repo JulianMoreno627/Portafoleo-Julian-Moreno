@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@plugin "@midudev/tailwind-animations";
 
 html {
   scroll-behavior: smooth;
@@ -123,6 +123,8 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    background: #1e1e24;
+    color: #f5f5f5;
   }
 }

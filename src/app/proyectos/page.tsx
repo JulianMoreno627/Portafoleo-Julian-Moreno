@@ -79,8 +79,8 @@ export default function ProyectosPage() {
       className={`rounded-xl overflow-hidden cursor-pointer ${
         darkMode
           ? "bg-gray-900 border border-gray-800"
-          : "bg-gray-50 border border-gray-200"
-      } transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl ${darkMode ? 'hover:shadow-teal-500/20' : 'hover:shadow-teal-600/30'}`}
+          : "bg-blue-50 border border-blue-200"
+      } transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl ${darkMode ? 'hover:shadow-teal-500/20' : 'hover:shadow-blue-400/30'}`}
     >
       <div className="relative h-48 w-full bg-gray-800">
         <Image
@@ -126,8 +126,8 @@ export default function ProyectosPage() {
       <section className="w-full max-w-4xl mt-16">
         {/* OBRAS */}
         <div className="mb-16">
-          <h2 className="text-xl font-bold mb-2">{t('projects.works')}</h2>
-          <div className={`h-1 w-16 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+          <h2 className="text-3xl font-bold mb-1">{t('projects.works')}</h2>
+          <div className={`h-1 w-24 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {obras.map((project, index) => (
@@ -138,8 +138,8 @@ export default function ProyectosPage() {
 
         {/* COLABORACIONES */}
         <div>
-          <h2 className="text-xl font-bold mb-2">{t('projects.collaborations')}</h2>
-          <div className={`h-1 w-38 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+          <h2 className="text-3xl font-bold mb-1">{t('projects.collaborations')}</h2>
+          <div className={`h-1 w-62 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {colaboraciones.map((project, index) => (

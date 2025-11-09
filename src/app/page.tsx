@@ -27,7 +27,7 @@ export default function Home() {
           {/* Info del perfil */}
           <div className="flex-1 text-left">
             {/* Tarjeta inclinada con la foto de perfil */}
-            <div className="mb-6">
+            <div className="mb-6 animate-pulse-fade-in">
               <TiltedCard
                 imageSrc="/images/foto-perfil.jpg"
                 altText="Foto de Julián Moreno"
@@ -44,11 +44,11 @@ export default function Home() {
               />
             </div>
             <div className="mt-14 md:mt-16 space-y-5 md:space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Hola, soy Julián</h1>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight animate-fade-in-right">Hola, soy Julián</h1>
               {/* Subtítulo actualizado */}
-              <p className={`${darkMode ? "text-gray-300" : "text-gray-800"} text-lg md:text-xl`}>Desarrollador Full Stack y Diseñador</p>
+              <p className={`${darkMode ? "text-gray-300" : "text-gray-800"} text-lg md:text-xl animate-fade-in-right`}>Desarrollador Full Stack y Diseñador</p>
               {/* Párrafo movido hacia arriba */}
-              <p className={`text-base md:text-lg max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+              <p className={`text-base md:text-lg max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"} animate-fade-in-right`}>
                 {t('home.work.description')}
               </p>
               {/* Íconos sociales justo debajo del párrafo */}
@@ -58,7 +58,7 @@ export default function Home() {
                 <a
                   href="/CV_JulianMoreno.pdf"
                   download
-                  className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 ${
+                  className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 animate-fade-in-right ${
                     darkMode
                       ? "bg-teal-300 text-black hover:bg-teal-400"
                       : "bg-teal-600 text-white hover:bg-teal-500"
