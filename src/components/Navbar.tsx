@@ -27,7 +27,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         darkMode 
           ? `${isScrolled ? "bg-[#202023]/60 backdrop-blur-lg shadow-md" : "bg-[#202023]"}` 
-          : `${isScrolled ? "bg-[#f5e9da]/85 backdrop-blur-md shadow-sm" : "bg-[#f7efe3]"}`
+          : `${isScrolled ? "bg-[#f5e9da]/85 backdrop-blur-md shadow-sm" : "bg-[#f5e9da]"}`
       }`}
     >
       <div className="w-full max-w-4xl mx-auto flex items-center justify-between py-4 px-6">
@@ -70,6 +70,16 @@ export default function Navbar() {
             }`}
           >
             {t('nav.services')}
+          </div>
+          <div
+            onClick={() => router.push('/testimonios')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
+              isActive("/testimonios")
+                ? "text-cyan-400"
+                : "hover:text-cyan-400"
+            }`}
+          >
+            {t('nav.testimonials')}
           </div>
           <div
             onClick={() => router.push('/contacto')}

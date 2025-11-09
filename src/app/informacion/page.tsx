@@ -32,7 +32,7 @@ export default function InformacionPage() {
     <main
       className={`min-h-screen ${
         darkMode ? "bg-[#202023] text-white" : "bg-[#f5e9da] text-black"
-      } transition-colors duration-300`}
+      } transition-colors duration-300 overflow-hidden`}
     >
       {/* NAVBAR STICKY (compartida) */}
       <Navbar />
@@ -44,7 +44,7 @@ export default function InformacionPage() {
           {/* Encabezado alineado a la izquierda y sin "Resumen" */}
           <div className="mb-8">
             <h1 className={`text-4xl md:text-3xl font-extrabold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('about.me.title')}</h1>
-            <div className={`h-1 w-35 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+            <div className={`h-1 w-34 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -63,7 +63,7 @@ export default function InformacionPage() {
 
             {/* Columna derecha - Texto */}
             <div className="space-y-6">
-              <h4 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-cyan-700'}`}>Yo soy Julián Moreno</h4>
+              <h4 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-black'}`}>Julián Moreno</h4>
 
               <div className="lg:max-w-[60ch]">
                 <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
@@ -81,16 +81,17 @@ export default function InformacionPage() {
                 </p>
               </div>
 
-              {/* Botón Descargar CV */}
+              {/* Botón Mi portafolio (estilo igual al botón de inicio) */}
               <div className="pt-2">
                 <a
                   href="/proyectos"
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition transform hover:scale-[1.03] ${
-                    darkMode ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                  className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 ${
+                    darkMode
+                      ? 'bg-teal-300 text-black hover:bg-teal-400'
+                      : 'bg-teal-600 text-white hover:bg-teal-500'
                   }`}
                 >
                   <span>Mi portafolio</span>
-                  <Download className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -103,7 +104,7 @@ export default function InformacionPage() {
             <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('about.skills.title')}
             </h2>
-            <div className={`h-1 w-82 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+            <div className={`h-1 w-83 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">

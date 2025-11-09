@@ -20,6 +20,7 @@ const translations = {
     'nav.projects': 'Proyectos',
     'nav.services': 'Servicios',
     'nav.about': 'Información',
+    'nav.testimonials': 'Testimonios',
     'nav.contact': 'Contacto',
     
     // Home page
@@ -107,6 +108,11 @@ const translations = {
     
     // Footer
     'footer.rights': 'Todos los derechos reservados.',
+    
+    // Testimonials page
+    'testimonials.title': 'Testimonios',
+    'testimonials.subtitle': 'Lo que dicen clientes y colaboradores',
+    'testimonials.description': 'Algunas palabras de personas con quienes he trabajado. Gracias por su confianza.',
   },
   en: {
     // Navbar
@@ -114,6 +120,7 @@ const translations = {
     'nav.projects': 'Projects',
     'nav.services': 'Services',
     'nav.about': 'About',
+    'nav.testimonials': 'Testimonials',
     'nav.contact': 'Contact',
     
     // Home page
@@ -201,6 +208,11 @@ const translations = {
     
     // Footer
     'footer.rights': 'All rights reserved.',
+
+    // Testimonials page
+    'testimonials.title': 'Testimonials',
+    'testimonials.subtitle': 'What clients and collaborators say',
+    'testimonials.description': 'A few words from people I have worked with. Thank you for your trust.',
   }
 };
 
