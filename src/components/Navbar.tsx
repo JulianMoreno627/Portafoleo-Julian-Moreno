@@ -82,6 +82,16 @@ export default function Navbar() {
             {t('nav.testimonials')}
           </div>
           <div
+            onClick={() => router.push('/experiencias')}
+            className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
+              isActive("/experiencias")
+                ? "text-cyan-400"
+                : "hover:text-cyan-400"
+            }`}
+          >
+            {t('nav.experiences')}
+          </div>
+          <div
             onClick={() => router.push('/contacto')}
             className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
               isActive("/contacto")

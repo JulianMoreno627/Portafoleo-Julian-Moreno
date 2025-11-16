@@ -21,6 +21,7 @@ const translations = {
     'nav.services': 'Servicios',
     'nav.about': 'Información',
     'nav.testimonials': 'Testimonios',
+    'nav.experiences': 'Experiencias',
     'nav.contact': 'Contacto',
     
     // Home page
@@ -113,6 +114,17 @@ const translations = {
     'testimonials.title': 'Testimonios',
     'testimonials.subtitle': 'Lo que dicen clientes y colaboradores',
     'testimonials.description': 'Algunas palabras de personas con quienes he trabajado. Gracias por su confianza.',
+
+    // Experiences page
+    'experiences.title': 'Experiencias',
+    'experiences.academic.title': 'Experiencia Académica',
+    'experiences.academic.item1': 'Ingeniería de software · Universidad Cooperativa · 2023-2027',
+    'experiences.academic.item2': 'Diplomado en Desarrollo Web · Platzi · 2023-2024',
+    'experiences.academic.item1.desc': 'Formación en fundamentos de programación, algoritmos, estructuras de datos, bases de datos y redes.',
+    'experiences.academic.item2.desc': 'Diplomado orientado a desarrollo web moderno: HTML, CSS, JavaScript y librerías frontend.',
+    'experiences.work.title': 'Experiencia Laboral',
+    'experiences.work.item1': 'Frontend Developer · Tech Evolution · 2023-2024',
+    'experiences.work.item1.desc': 'Implementación de interfaces con React/Next.js, estilos con Tailwind y consumo de APIs REST.',
   },
   en: {
     // Navbar
@@ -121,6 +133,7 @@ const translations = {
     'nav.services': 'Services',
     'nav.about': 'About',
     'nav.testimonials': 'Testimonials',
+    'nav.experiences': 'Experiences',
     'nav.contact': 'Contact',
     
     // Home page
@@ -213,6 +226,17 @@ const translations = {
     'testimonials.title': 'Testimonials',
     'testimonials.subtitle': 'What clients and collaborators say',
     'testimonials.description': 'A few words from people I have worked with. Thank you for your trust.',
+
+    // Experiences page
+    'experiences.title': 'Experiences',
+    'experiences.academic.title': 'Academic Experience',
+    'experiences.academic.item1': 'Software Engineering · Universidad Cooperativa · 2023-2027',
+    'experiences.academic.item2': 'Web Development Diploma · Platzi · 2023-2024',
+    'experiences.academic.item1.desc': 'Training in programming fundamentals, algorithms, data structures, databases and networks.',
+    'experiences.academic.item2.desc': 'Diploma focused on modern web development: HTML, CSS, JavaScript and frontend libraries.',
+    'experiences.work.title': 'Work Experience',
+    'experiences.work.item1': 'Frontend Developer · Tech Evolution · 2023-2024',
+    'experiences.work.item1.desc': 'Built interfaces with React/Next.js, styled with Tailwind, and integrated REST APIs.',
   }
 };
 
