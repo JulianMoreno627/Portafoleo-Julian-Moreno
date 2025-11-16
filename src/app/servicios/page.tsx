@@ -86,7 +86,7 @@ export default function ServiciosPage() {
               key={index}
               variant={darkMode ? 'dark' : 'light'}
               spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
-              className="group transition-all duration-300 hover:scale-105 hover:border-cyan-500"
+              className="group transition-all duration-300 hover:scale-105 hover:border-cyan-500 animate-pulse-fade-in"
             >
               <div
                 className={`relative w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-300'}`}
@@ -106,7 +106,7 @@ export default function ServiciosPage() {
         </div>
 
         {/* CTA arriba (reubicado) */}
-        <div className="mt-20 text-center">
+        <div className="mt-20 text-center animate-fade-in-right">
           <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
           <p className={`mb-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
             {t('services.cta.description')}
@@ -117,7 +117,7 @@ export default function ServiciosPage() {
               darkMode
                 ? "bg-cyan-500 text-black hover:bg-cyan-400"
                 : "bg-cyan-600 text-white hover:bg-cyan-500"
-            } font-semibold rounded-md shadow transition`}
+            } font-semibold rounded-md shadow transition animate-pulse-fade-in`}
           >
             {t('services.cta.button')}
           </Link>

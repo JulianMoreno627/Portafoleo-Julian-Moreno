@@ -118,13 +118,15 @@ const translations = {
     // Experiences page
     'experiences.title': 'Experiencias',
     'experiences.academic.title': 'Experiencia Académica',
-    'experiences.academic.item1': 'Ingeniería de software · Universidad Cooperativa · 2023-2027',
-    'experiences.academic.item2': 'Diplomado en Desarrollo Web · Platzi · 2023-2024',
+    'experiences.academic.item1': 'Ingeniería de software · Universidad Cooperativa ',
+    'experiences.academic.item2': 'Diplomado en Desarrollo Web · Platzi ',
     'experiences.academic.item1.desc': 'Formación en fundamentos de programación, algoritmos, estructuras de datos, bases de datos y redes.',
     'experiences.academic.item2.desc': 'Diplomado orientado a desarrollo web moderno: HTML, CSS, JavaScript y librerías frontend.',
     'experiences.work.title': 'Experiencia Laboral',
-    'experiences.work.item1': 'Frontend Developer · Tech Evolution · 2023-2024',
+    'experiences.work.item1': 'Frontend Developer · Tech Evolution ',
     'experiences.work.item1.desc': 'Implementación de interfaces con React/Next.js, estilos con Tailwind y consumo de APIs REST.',
+    'experiences.work.item2': 'Desarrollador Junior',
+    'experiences.work.item2.desc': 'Apoyo en desarrollo, pruebas y automatización; colaboración bajo Scrum.',
   },
   en: {
     // Navbar
@@ -237,6 +239,8 @@ const translations = {
     'experiences.work.title': 'Work Experience',
     'experiences.work.item1': 'Frontend Developer · Tech Evolution · 2023-2024',
     'experiences.work.item1.desc': 'Built interfaces with React/Next.js, styled with Tailwind, and integrated REST APIs.',
+    'experiences.work.item2': 'Junior Developer',
+    'experiences.work.item2.desc': 'Assisted in development, testing and basic automation; collaborated under Scrum.',
   }
 };
 

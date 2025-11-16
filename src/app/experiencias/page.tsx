@@ -32,14 +32,14 @@ export default function ExperienciasPage() {
       <section className="w-full max-w-4xl mx-auto px-6 py-10 mt-16">
         <div className="mb-8 animate-fade-in-right">
           <h1 className={`text-3xl font-bold mb-1 ${darkMode ? "text-white" : "text-gray-900"}`}>
-            {language === 'es' ? 'Experiencias Académicas' : 'Academic Experience'}
+            {language === 'es' ? 'Experiencia Académica' : 'Academic Experience'}
           </h1>
-          <div className="h-1 w-64 mb-8 bg-neutral-600"></div>
+          <div className="h-1 w-92 mb-8 bg-neutral-600"></div>
         </div>
 
         {/* Sección Académica estilo Testimonios */}
-        <div className="mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mb-18">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {([
                 {
                   category: 'academic',
@@ -47,7 +47,7 @@ export default function ExperienciasPage() {
                   descKey: 'experiences.academic.item1.desc',
                   icon: 'grad',
                   period: '2023 — 2027',
-                  tagsEs: ['Fundamentos', 'Algoritmos', 'Bases de datos', 'Redes'],
+                  tagsEs: ['Algoritmos', 'Frontend', 'Backend'],
                   tagsEn: ['Foundations', 'Algorithms', 'Databases', 'Networks'],
                 },
                 {
@@ -64,14 +64,14 @@ export default function ExperienciasPage() {
                   key={`a-${i}`}
                   variant={darkMode ? 'dark' : 'light'}
                   spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
-                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300"
+                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300 animate-pulse-fade-in"
                 >
-                  <div className="flex flex-col">
-                    <div className="mb-2">
+                  <div className="flex flex-col space-y-3">
+                    <div>
                       <span className={`${darkMode ? 'text-gray-300 bg-white/5' : 'text-gray-700 bg-gray-200/60'} inline-block text-xs font-medium uppercase tracking-wider rounded-md px-2 py-1`}>{item.period}</span>
                     </div>
-                    <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'} mb-1`}>{t(item.titleKey).replace(/\s*[•\-–—]\s*\d{4}(?:\s*[–—\-]\s*\d{4})?$/, '')}</h3>
-                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} text-sm mb-3`}>{t(item.descKey)}</p>
+                    <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t(item.titleKey).replace(/\s*[•\-–—]\s*\d{4}(?:\s*[–—\-]\s*\d{4})?$/, '')}</h3>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} text-sm`}>{t(item.descKey)}</p>
                     <div className="flex flex-wrap gap-2">
                       {(language === 'es' ? item.tagsEs : item.tagsEn).map((tag, idx) => (
                         <span key={idx} className={`${darkMode ? 'bg-cyan-900 text-cyan-200' : 'bg-cyan-100 text-cyan-800 border border-cyan-200'} px-3 py-1 rounded-md text-xs font-semibold`}>{tag}</span>
@@ -86,9 +86,9 @@ export default function ExperienciasPage() {
         {/* Encabezado: Experiencias Laborales */}
         <div className="mb-8 animate-fade-in-right">
           <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            {language === 'es' ? 'Experiencias Laborales' : 'Work Experience'}
+            {language === 'es' ? 'Experiencia Laboral' : 'Work Experience'}
           </h2>
-          <div className="h-1 w-64 mb-8 bg-neutral-600"></div>
+          <div className="h-1 w-77 mb-8 bg-neutral-600"></div>
         </div>
 
         {/* Sección Laboral estilo Testimonios */}
@@ -104,19 +104,28 @@ export default function ExperienciasPage() {
                   tagsEs: ['React', 'Next.js', 'Tailwind', 'APIs'],
                   tagsEn: ['React', 'Next.js', 'Tailwind', 'APIs'],
                 },
+                {
+                  category: 'work',
+                  titleKey: 'experiences.work.item2',
+                  descKey: 'experiences.work.item2.desc',
+                  icon: 'brief',
+                  period: '2023 — 2024',
+                  tagsEs: ['Testing', 'Automatizado', 'Scrum Master'],
+                  tagsEn: ['Testing', 'Automation', 'Scrum Master'],
+                },
               ] as ExperienceItem[]).map((item, i) => (
                 <SpotlightCard
                   key={`w-${i}`}
                   variant={darkMode ? 'dark' : 'light'}
                   spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
-                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300"
+                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300 min-h-[260px] animate-pulse-fade-in"
                 >
-                  <div className="flex flex-col">
-                    <div className="mb-2">
+                  <div className="flex flex-col space-y-3">
+                    <div>
                       <span className={`${darkMode ? 'text-gray-300 bg-white/5' : 'text-gray-700 bg-gray-200/60'} inline-block text-xs font-medium uppercase tracking-wider rounded-md px-2 py-1`}>{item.period}</span>
                     </div>
-                    <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'} mb-1`}>{t(item.titleKey).replace(/\s*[•\-–—]\s*\d{4}(?:\s*[–—\-]\s*\d{4})?$/, '')}</h3>
-                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} text-sm mb-3`}>{t(item.descKey)}</p>
+                    <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t(item.titleKey).replace(/\s*[•\-–—]\s*\d{4}(?:\s*[–—\-]\s*\d{4})?$/, '')}</h3>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} text-sm`}>{t(item.descKey)}</p>
                     <div className="flex flex-wrap gap-2">
                       {(language === 'es' ? item.tagsEs : item.tagsEn).map((tag, idx) => (
                         <span key={idx} className={`${darkMode ? 'bg-cyan-900 text-cyan-200' : 'bg-cyan-100 text-cyan-800 border border-cyan-200'} px-3 py-1 rounded-md text-xs font-semibold`}>{tag}</span>

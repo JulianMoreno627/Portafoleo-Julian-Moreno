@@ -42,7 +42,7 @@ export default function InformacionPage() {
         {/* SOBRE MÍ (ajustado según solicitud) */}
         <section className="mb-24">
           {/* Encabezado alineado a la izquierda y sin "Resumen" */}
-          <div className="mb-8">
+          <div className="mb-8 animate-fade-in-right">
             <h1 className={`text-4xl md:text-3xl font-extrabold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('about.me.title')}</h1>
             <div className={`h-1 w-34 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
@@ -50,7 +50,7 @@ export default function InformacionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             {/* Columna izquierda - Imagen */}
             <div className="flex justify-center lg:justify-start">
-              <div className={`relative w-90 h-125 rounded-2xl overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
+              <div className={`relative w-90 h-125 rounded-2xl overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-200'} animate-pulse-fade-in`}>
                 <Image
                   src="/images/info.jpeg"
                   alt="Foto de información"
@@ -63,26 +63,26 @@ export default function InformacionPage() {
 
             {/* Columna derecha - Texto */}
             <div className="space-y-6">
-              <h4 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-black'}`}>Julián Moreno</h4>
+              <h4 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-black'} animate-fade-in-right`}>Julián Moreno</h4>
 
               <div className="lg:max-w-[60ch]">
-                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed animate-fade-in-right`}>
                   {t('about.me.p1')}
                 </p>
               </div>
               <div className="lg:max-w-[60ch]">
-                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed animate-fade-in-right`}>
                   {t('about.me.p1b')}
                 </p>
               </div>
               <div className="lg:max-w-[60ch]">
-                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed`}>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} text-sm md:text-base leading-relaxed animate-fade-in-right`}>
                   {t('about.me.p2')}
                 </p>
               </div>
 
               {/* Botón Mi portafolio (estilo igual al botón de inicio) */}
-              <div className="pt-2">
+              <div className="pt-2 animate-fade-in-right">
                 <a
                   href="/proyectos"
                   className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 ${
@@ -100,7 +100,7 @@ export default function InformacionPage() {
 
         {/* HABILIDADES TÉCNICAS - DISEÑO COMO LA IMAGEN */}
         <section className="mb-16">
-          <div className="mb-10">
+          <div className="mb-10 animate-fade-in-right">
             <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('about.skills.title')}
             </h2>
@@ -109,7 +109,7 @@ export default function InformacionPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {/* FRONTEND */}
-            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg ${
+            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg animate-pulse-fade-in ${
               darkMode 
                 ? "bg-[#2a2d3a] border border-gray-700" 
                 : "bg-[#e8e9ed] border border-gray-300"
@@ -141,7 +141,7 @@ export default function InformacionPage() {
             </div>
 
             {/* BACKEND */}
-            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg ${
+            <div className={`rounded-2xl p-6 transform transition-transform duration-300 ease-out hover:scale-[1.03] hover:shadow-lg animate-pulse-fade-in ${
               darkMode 
                 ? "bg-[#2a2d3a] border border-gray-700" 
                 : "bg-[#e8e9ed] border border-gray-300"
