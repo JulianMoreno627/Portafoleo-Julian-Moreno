@@ -12,6 +12,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -19,6 +20,10 @@ export default function Navbar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   const isActive = (path: string) => pathname === path;
 
@@ -40,7 +45,7 @@ export default function Navbar() {
         </div>
 
         {/* Links */}
-        <div className="flex gap-6 text-sm items-center">
+        <div className="hidden md:flex gap-6 text-sm items-center">
           <div
             onClick={() => router.push('/informacion')}
             className={`transition-all duration-200 transform hover:scale-[1.02] cursor-pointer ${
@@ -120,8 +125,33 @@ export default function Navbar() {
 
           {/* Botón modo claro / oscuro animado */}
           <ClientOnlyThemeButton />
+
+          {/* Toggle móvil */}
+          <button
+            aria-label="menu"
+            className={`ml-2 w-9 h-9 rounded-md flex md:hidden items-center justify-center shadow text-xs font-semibold ${
+              darkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-gray-200 text-black hover:bg-gray-300"
+            } transition`}
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            ☰
+          </button>
         </div>
       </div>
+
+      {mobileOpen && (
+        <div className={`md:hidden px-6 pb-4 ${darkMode ? "bg-[#202023]/80" : "bg-[#f5e9da]/90"} backdrop-blur-sm border-t ${darkMode ? "border-gray-800" : "border-gray-200"} animate-fade-in-right`}>
+          <div className="grid grid-cols-2 gap-4 text-sm pt-3">
+            <button onClick={() => router.push('/informacion')} className={`text-left ${isActive('/informacion') ? 'text-cyan-400' : ''}`}>{t('nav.about')}</button>
+            <button onClick={() => router.push('/proyectos')} className={`text-left ${isActive('/proyectos') ? 'text-cyan-400' : ''}`}>{t('nav.projects')}</button>
+            <button onClick={() => router.push('/servicios')} className={`text-left ${isActive('/servicios') ? 'text-cyan-400' : ''}`}>{t('nav.services')}</button>
+            <button onClick={() => router.push('/testimonios')} className={`text-left ${isActive('/testimonios') ? 'text-cyan-400' : ''}`}>{t('nav.testimonials')}</button>
+            <button onClick={() => router.push('/experiencias')} className={`text-left ${isActive('/experiencias') ? 'text-cyan-400' : ''}`}>{t('nav.experiences')}</button>
+            <button onClick={() => router.push('/contacto')} className={`text-left ${isActive('/contacto') ? 'text-cyan-400' : ''}`}>{t('nav.contact')}</button>
+          </div>
+          {/* Controles ocultos en menú móvil para evitar duplicación */}
+        </div>
+      )}
     </nav>
   );
 }

@@ -70,10 +70,10 @@ export default function TestimoniosPage() {
 
       <section className="w-full max-w-4xl mx-auto px-6 py-10 mt-16">
         <div className="mb-8 animate-fade-in-right">
-          <h1 className={`text-3xl font-bold mb-1 ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h1 className={`text-3xl md:text-4xl font-bold mb-1 ${darkMode ? "text-white" : "text-gray-900"}`}>
             {t("testimonials.title")}
           </h1>
-          <div className="h-1 w-47 mb-8 bg-neutral-600"></div>
+          <div className="h-1 w-28 md:w-47 mb-8 bg-neutral-600"></div>
           {/* Descripción removida según solicitud */}
         </div>
 

@@ -41,7 +41,7 @@ export default function ContactoPage() {
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">
-        <h1 className="text-4xl font-bold mb-1 animate-fade-in-right">{t('contact.title')}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-1 animate-fade-in-right">{t('contact.title')}</h1>
         <div className="h-1 w-43 mb-8 bg-neutral-600"></div>
         <p className={`mb-12 max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"} animate-fade-in-right`}>
           {t('contact.description')}

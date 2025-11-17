@@ -73,8 +73,8 @@ export default function ServiciosPage() {
 
       {/* CONTENIDO */}
       <section className="w-full max-w-4xl mt-16">
-        <h1 className="text-3xl font-bold mb-1">{t('services.title')}</h1>
-        <div className="h-1 w-36 mb-8 bg-neutral-600"></div>
+        <h1 className="text-3xl md:text-4xl font-bold mb-1">{t('services.title')}</h1>
+        <div className="h-1 w-24 md:w-36 mb-8 bg-neutral-600"></div>
         <p className={`mb-12 max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
           {t('services.description')}
         </p>
@@ -89,7 +89,7 @@ export default function ServiciosPage() {
               className="group transition-all duration-300 hover:scale-105 hover:border-cyan-500 animate-pulse-fade-in"
             >
               <div
-                className={`relative w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-300'}`}
+                className={`relative w-14 h-14 md:w-16 md:h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-300'}`}
               >
                 <div className={`${darkMode ? 'text-white' : 'text-black'} text-3xl drop-shadow-sm`}>
                   {servicio.icono}

@@ -31,10 +31,10 @@ export default function ExperienciasPage() {
 
       <section className="w-full max-w-4xl mx-auto px-6 py-10 mt-16">
         <div className="mb-8 animate-fade-in-right">
-          <h1 className={`text-3xl font-bold mb-1 ${darkMode ? "text-white" : "text-gray-900"}`}>
+          <h1 className={`text-3xl md:text-4xl font-bold mb-1 ${darkMode ? "text-white" : "text-gray-900"}`}>
             {language === 'es' ? 'Experiencia Académica' : 'Academic Experience'}
           </h1>
-          <div className="h-1 w-92 mb-8 bg-neutral-600"></div>
+          <div className="h-1 w-36 md:w-92 mb-8 bg-neutral-600"></div>
         </div>
 
         {/* Sección Académica estilo Testimonios */}
@@ -66,7 +66,7 @@ export default function ExperienciasPage() {
                   spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
                   className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300 animate-pulse-fade-in"
                 >
-                  <div className="flex flex-col space-y-3">
+                  <div className="flex flex-col space-y-3 md:space-y-4">
                     <div>
                       <span className={`${darkMode ? 'text-gray-300 bg-white/5' : 'text-gray-700 bg-gray-200/60'} inline-block text-xs font-medium uppercase tracking-wider rounded-md px-2 py-1`}>{item.period}</span>
                     </div>
@@ -85,10 +85,10 @@ export default function ExperienciasPage() {
 
         {/* Encabezado: Experiencias Laborales */}
         <div className="mb-8 animate-fade-in-right">
-          <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className={`text-3xl md:text-4xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             {language === 'es' ? 'Experiencia Laboral' : 'Work Experience'}
           </h2>
-          <div className="h-1 w-77 mb-8 bg-neutral-600"></div>
+          <div className="h-1 w-36 md:w-77 mb-8 bg-neutral-600"></div>
         </div>
 
         {/* Sección Laboral estilo Testimonios */}
@@ -118,9 +118,9 @@ export default function ExperienciasPage() {
                   key={`w-${i}`}
                   variant={darkMode ? 'dark' : 'light'}
                   spotlightColor={darkMode ? 'rgba(0, 229, 255, 0.12)' : 'rgba(0, 199, 255, 0.18)'}
-                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300 min-h-[260px] animate-pulse-fade-in"
+                  className="group hover:scale-[1.02] hover:shadow-lg transition-transform duration-300 md:min-h-[260px] animate-pulse-fade-in"
                 >
-                  <div className="flex flex-col space-y-3">
+                  <div className="flex flex-col space-y-3 md:space-y-4">
                     <div>
                       <span className={`${darkMode ? 'text-gray-300 bg-white/5' : 'text-gray-700 bg-gray-200/60'} inline-block text-xs font-medium uppercase tracking-wider rounded-md px-2 py-1`}>{item.period}</span>
                     </div>

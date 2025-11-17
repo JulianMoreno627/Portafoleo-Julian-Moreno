@@ -44,7 +44,7 @@ export default function InformacionPage() {
           {/* Encabezado alineado a la izquierda y sin "Resumen" */}
           <div className="mb-8 animate-fade-in-right">
             <h1 className={`text-4xl md:text-3xl font-extrabold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t('about.me.title')}</h1>
-            <div className={`h-1 w-34 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+            <div className={`h-1 w-24 md:w-34 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -104,7 +104,7 @@ export default function InformacionPage() {
             <h2 className={`text-3xl font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               {t('about.skills.title')}
             </h2>
-            <div className={`h-1 w-83 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
+            <div className={`h-1 w-32 md:w-83 mb-8 ${darkMode ? "bg-neutral-600" : "bg-neutral-600"}`}></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">

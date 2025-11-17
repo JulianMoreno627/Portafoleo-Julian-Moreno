@@ -82,7 +82,7 @@ export default function ProyectosPage() {
           : "bg-blue-50 border border-blue-200"
       } transform hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl ${darkMode ? 'hover:shadow-teal-500/20' : 'hover:shadow-blue-400/30'} animate-pulse-fade-in`}
     >
-      <div className="relative h-48 w-full bg-gray-800">
+      <div className="relative h-40 md:h-48 w-full bg-gray-800">
         <Image
           src={project.imagen}
           alt={project.titulo}
