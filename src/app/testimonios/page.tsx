@@ -23,39 +23,35 @@ export default function TestimoniosPage() {
 
   const testimonials: Testimonial[] = [
     {
-      name: "Andrea P.",
-      role: "PM",
-      company: "Startup Fintech",
+      name: t('testimonials.item1.name'),
+      role: t('testimonials.item1.role'),
+      company: t('testimonials.item1.company'),
       avatar: "/images/foto-perfil.jpg",
-      quote:
-        "Julián es muy comprometido y mantiene una excelente comunicación. Entregó a tiempo y con calidad.",
+      quote: t('testimonials.item1.quote'),
       stars: 5,
     },
     {
-      name: "Carlos R.",
-      role: "CTO",
-      company: "Agencia Web",
+      name: t('testimonials.item2.name'),
+      role: t('testimonials.item2.role'),
+      company: t('testimonials.item2.company'),
       avatar: "/images/foto-perfil.jpg",
-      quote:
-        "Su enfoque en detalle y buenas prácticas nos ayudó a mejorar el rendimiento y la accesibilidad.",
+      quote: t('testimonials.item2.quote'),
       stars: 5,
     },
     {
-      name: "María V.",
-      role: "Founder",
-      company: "E-Commerce",
+      name: t('testimonials.item3.name'),
+      role: t('testimonials.item3.role'),
+      company: t('testimonials.item3.company'),
       avatar: "/images/foto-perfil.jpg",
-      quote:
-        "Propuso soluciones creativas y se adaptó rápidamente a cambios de alcance sin perder calidad.",
+      quote: t('testimonials.item3.quote'),
       stars: 4,
     },
     {
-      name: "Diego S.",
-      role: "Lead Dev",
-      company: "Consultora Tech",
+      name: t('testimonials.item4.name'),
+      role: t('testimonials.item4.role'),
+      company: t('testimonials.item4.company'),
       avatar: "/images/foto-perfil.jpg",
-      quote:
-        "Buen trabajo en equipo y atención a detalles. Ayudó a estandarizar componentes y mejorar DX.",
+      quote: t('testimonials.item4.quote'),
       stars: 5,
     },
   ];

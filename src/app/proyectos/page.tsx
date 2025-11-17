@@ -13,32 +13,32 @@ export default function ProyectosPage() {
 
   const obras = [
     {
-      titulo: "Inicio Sesión",
-      descripcion: "Proyecto frontend sobre un inicio de sesión elegante con Tailwind CSS.",
+      titulo: t('projects.works.item1.title'),
+      descripcion: t('projects.works.item1.desc'),
       imagen: "/images/inicio-sesion.png",
       tecnologias: ["Tailwind CSS", "TypeScript", "Next.js"],
       github: "https://github.com/JulianMoreno627/Inicio-Sesion-Tailwind.git",
       demo: "https://inicio-sesion-tailwind.vercel.app/",
     },
     {
-      titulo: "Diseno Interfaz",
-      descripcion: "Interfaz sobre tarjetas creado con tailwindv y next.js.",
+      titulo: t('projects.works.item2.title'),
+      descripcion: t('projects.works.item2.desc'),
       imagen: "/images/Diseno-Interfaz.png",
       tecnologias: ["Next.js", "Tailwind CSS"],
       github: "https://github.com/JulianMoreno627/Taller-Tailwind-con-Vercel.git",
       demo: "https://taller-tailwind-con-vercel-5x1ih26jy-julianmoreno627s-projects.vercel.app/",
     },
     {
-      titulo: "Diseño Ticket",
-      descripcion: "Diseño web sobre un boleto de bus con Tailwind CSS.",
+      titulo: t('projects.works.item3.title'),
+      descripcion: t('projects.works.item3.desc'),
       imagen: "/images/Diseno-ticket.png",
       tecnologias: ["HTML", "Tailwind CSS", "Next.js"],
       github: "https://github.com/JulianMoreno627/diseno-ticket.git",
       demo: "https://diseno-ticket.vercel.app/",
     },
     {
-      titulo: "Almacenamiento de libros",
-      descripcion: "Aplicación en Django con dos modelos con el enfoque de base de datos relacional, el proyecto cuenta con dos modelos para una sola aplicación",
+      titulo: t('projects.works.item4.title'),
+      descripcion: t('projects.works.item4.desc'),
       imagen: "/images/Almacenamiento-de-libros.png",
       tecnologias: ["Django", "CSS", "Python", "SQLITE"],
       github: "https://github.com/JulianMoreno627/almacenar-libros.git",
@@ -48,16 +48,16 @@ export default function ProyectosPage() {
 
   const colaboraciones = [
     {
-      titulo: "Mascotas",
-      descripcion: "Proyecto fronted sobre una página para mascotas realizada con Angular.",
+      titulo: t('projects.collab.item1.title'),
+      descripcion: t('projects.collab.item1.desc'),
       imagen: "/images/Proyecto-Mascotas.png",
       tecnologias: ["Angular", "TypeScript", "Javascript", "HTML"],
       github: "https://github.com/JulianMoreno627/proyecto-mascotas.git",
       demo: "https://proyecto-mascotas-six.vercel.app/",
     },
     {
-      titulo: "Músculos",
-      descripcion: "App web sobre colier realizador de muscular realizada con Websoket.",
+      titulo: t('projects.collab.item2.title'),
+      descripcion: t('projects.collab.item2.desc'),
       imagen: "/images/collab2.jpg",
       tecnologias: ["WebSocket", "Node.js", "React"],
       github: "https://github.com/tu-usuario/musculos",

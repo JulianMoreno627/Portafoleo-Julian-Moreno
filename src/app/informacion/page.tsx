@@ -91,7 +91,7 @@ export default function InformacionPage() {
                       : 'bg-teal-600 text-white hover:bg-teal-500'
                   }`}
                 >
-                  <span>Mi portafolio</span>
+                  <span>{t('about.portfolio.button')}</span>
                 </a>
               </div>
             </div>

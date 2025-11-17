@@ -26,39 +26,33 @@ export default function ServiciosPage() {
   const servicios: Servicio[] = [
     {
       icono: <CodeIcon />,
-      titulo: "Desarrollo Web",
-      descripcion:
-        "Sitios modernos y responsivos con React, Next.js y Tailwind.",
+      titulo: t('services.web.development'),
+      descripcion: t('services.web.description'),
     },
     {
       icono: <PhoneIphoneIcon />,
-      titulo: "Aplicaciones Móviles",
-      descripcion:
-        "Apps nativas y multiplataforma con excelente experiencia de usuario.",
+      titulo: t('services.mobile.development'),
+      descripcion: t('services.mobile.description'),
     },
     {
       icono: <DesignServicesIcon />,
-      titulo: "Diseño UI/UX",
-      descripcion:
-        "Interfaces intuitivas y atractivas que mejoran la conversión.",
+      titulo: t('services.ui.design'),
+      descripcion: t('services.ui.description'),
     },
     {
       icono: <SpeedIcon />,
-      titulo: "Optimización",
-      descripcion:
-        "Mejora de rendimiento, SEO y experiencia del usuario.",
+      titulo: t('services.optimization'),
+      descripcion: t('services.optimization.description'),
     },
     {
       icono: <StorageIcon />,
-      titulo: "Backend y APIs",
-      descripcion:
-        "APIs robustas y escalables con Node.js, Python y SQL/NoSQL.",
+      titulo: t('services.backend'),
+      descripcion: t('services.backend.description'),
     },
     {
       icono: <SupportAgentIcon />,
-      titulo: "Consultoría",
-      descripcion:
-        "Asesoría técnica en arquitectura y elección de tecnologías.",
+      titulo: t('services.consulting'),
+      descripcion: t('services.consulting.description'),
     },
   ];
 

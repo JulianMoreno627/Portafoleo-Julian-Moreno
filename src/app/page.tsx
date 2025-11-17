@@ -44,9 +44,8 @@ export default function Home() {
               />
             </div>
             <div className="mt-14 md:mt-16 space-y-5 md:space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight animate-fade-in-right">Hola, soy Julián</h1>
-              {/* Subtítulo actualizado */}
-              <p className={`${darkMode ? "text-gray-300" : "text-gray-800"} text-lg md:text-xl animate-fade-in-right`}>Desarrollador Full Stack y Diseñador</p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight animate-fade-in-right">{t('home.greeting')}</h1>
+              <p className={`${darkMode ? "text-gray-300" : "text-gray-800"} text-lg md:text-xl animate-fade-in-right`}>{t('home.title')}</p>
               {/* Párrafo movido hacia arriba */}
               <p className={`text-base md:text-lg max-w-2xl ${darkMode ? "text-gray-400" : "text-gray-600"} animate-fade-in-right`}>
                 {t('home.work.description')}
@@ -65,7 +64,7 @@ export default function Home() {
                   }`}
                 >
                   <Download className="w-5 h-5" />
-                  Descargar CV
+                  {t('home.download.cv')}
                 </a>
               </div>
             </div>
