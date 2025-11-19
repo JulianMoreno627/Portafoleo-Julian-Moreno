@@ -89,7 +89,7 @@ export default function ContactoPage() {
                 <div className="flex gap-3">
                   {/* LinkedIn */}
                   <a
-                    href="https://linkedin.com/in/tu-usuario"
+                    href="https://www.linkedin.com/in/juli%C3%A1n-david-moreno-otaya-096819396/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-10 h-10 flex items-center justify-center rounded-lg ${
@@ -119,7 +119,7 @@ export default function ContactoPage() {
                   </a>
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/573001234567"
+                    href="https://wa.me/573116430219"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-10 h-10 flex items-center justify-center rounded-lg ${

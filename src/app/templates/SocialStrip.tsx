@@ -21,7 +21,7 @@ export default function SocialStrip({ variant }: { variant: Variant }) {
       <div className="flex items-center justify-start gap-4">
         {/* GitHub */}
         <a
-          href="https://github.com/tu-usuario"
+          href="https://github.com/JulianMoreno627"
           target="_blank"
           rel="noopener noreferrer"
           className={`${baseItem} ${variant === "dark" ? itemDark : itemLight}`}
@@ -33,7 +33,7 @@ export default function SocialStrip({ variant }: { variant: Variant }) {
 
         {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/tu-usuario"
+          href="https://www.linkedin.com/in/juli%C3%A1n-david-moreno-otaya-096819396/"
           target="_blank"
           rel="noopener noreferrer"
           className={`${baseItem} ${variant === "dark" ? itemDark : itemLight}`}
@@ -45,7 +45,7 @@ export default function SocialStrip({ variant }: { variant: Variant }) {
 
         {/* WhatsApp */}
         <a
-          href="https://wa.me/573001234567"
+          href="https://wa.me/573116430219"
           target="_blank"
           rel="noopener noreferrer"
           className={`${baseItem} ${variant === "dark" ? itemDark : itemLight}`}

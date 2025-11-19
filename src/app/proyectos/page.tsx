@@ -58,10 +58,10 @@ export default function ProyectosPage() {
     {
       titulo: t('projects.collab.item2.title'),
       descripcion: t('projects.collab.item2.desc'),
-      imagen: "/images/collab2.jpg",
-      tecnologias: ["WebSocket", "Node.js", "React"],
-      github: "https://github.com/tu-usuario/musculos",
-      demo: "https://musculos.vercel.app",
+      imagen: "/images/Biblio-Nexus.png",
+      tecnologias: ["Python", "PostgreSQL", "Django", "HTML", "CSS"],
+      github: "https://github.com/Andres766/biblioteca-proyecto",
+      demo: "https://biblioteca-proyecto-ypvs.onrender.com/",
     },
   ];
 

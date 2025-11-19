@@ -55,8 +55,8 @@ const translations = {
     'projects.works.item4.desc': 'Aplicación en Django con dos modelos y enfoque de base de datos relacional.',
     'projects.collab.item1.title': 'Mascotas',
     'projects.collab.item1.desc': 'Proyecto frontend de una página para mascotas realizado con Angular.',
-    'projects.collab.item2.title': 'Músculos',
-    'projects.collab.item2.desc': 'Aplicación web colaborativa realizada con WebSocket.',
+    'projects.collab.item2.title': 'Biblioteca Nexus',
+    'projects.collab.item2.desc': 'Bibliote Digital.',
     
     // Services page
     'services.title': 'Servicios',
