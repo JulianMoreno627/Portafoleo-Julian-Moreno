@@ -55,8 +55,8 @@ export default function Home() {
               {/* Botón Descargar CV con icono */}
               <div className="pt-2">
                 <a
-                  href="/CV_JulianMoreno.pdf"
-                  download
+                  href="/CV JULIAN MORENO.pdf"
+                  download="CV JULIAN MORENO.pdf"
                   className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md font-semibold transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-0.5 animate-fade-in-right ${
                     darkMode
                       ? "bg-teal-300 text-black hover:bg-teal-400"
