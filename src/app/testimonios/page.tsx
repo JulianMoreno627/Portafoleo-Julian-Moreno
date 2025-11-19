@@ -26,7 +26,7 @@ export default function TestimoniosPage() {
       name: t('testimonials.item1.name'),
       role: t('testimonials.item1.role'),
       company: t('testimonials.item1.company'),
-      avatar: "/images/foto-perfil.jpg",
+      avatar: "/images/Andres-Cordoba.jpg",
       quote: t('testimonials.item1.quote'),
       stars: 5,
     },
@@ -34,7 +34,7 @@ export default function TestimoniosPage() {
       name: t('testimonials.item2.name'),
       role: t('testimonials.item2.role'),
       company: t('testimonials.item2.company'),
-      avatar: "/images/foto-perfil.jpg",
+      avatar: "/images/Luis-Cajigas.jpg",
       quote: t('testimonials.item2.quote'),
       stars: 5,
     },
@@ -42,7 +42,7 @@ export default function TestimoniosPage() {
       name: t('testimonials.item3.name'),
       role: t('testimonials.item3.role'),
       company: t('testimonials.item3.company'),
-      avatar: "/images/foto-perfil.jpg",
+      avatar: "/images/Dirkin-Ojeda.jpeg",
       quote: t('testimonials.item3.quote'),
       stars: 4,
     },
@@ -50,7 +50,7 @@ export default function TestimoniosPage() {
       name: t('testimonials.item4.name'),
       role: t('testimonials.item4.role'),
       company: t('testimonials.item4.company'),
-      avatar: "/images/foto-perfil.jpg",
+      avatar: "/images/consultoria.avif",
       quote: t('testimonials.item4.quote'),
       stars: 5,
     },
@@ -83,7 +83,11 @@ export default function TestimoniosPage() {
             >
               <div className="flex items-start gap-4">
                 <div className={`w-12 h-12 rounded-full overflow-hidden flex items-center justify-center ${darkMode ? "bg-gray-800 ring-1 ring-gray-700" : "bg-gray-200 ring-1 ring-gray-300"}`}>
-                  <PersonIcon className={`${darkMode ? 'text-white' : 'text-black'}`} fontSize="small" />
+                  {item.avatar ? (
+                    <Image src={item.avatar} alt={item.name} width={48} height={48} className="object-cover w-12 h-12" />
+                  ) : (
+                    <PersonIcon className={`${darkMode ? 'text-white' : 'text-black'}`} fontSize="small" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
