@@ -185,6 +185,16 @@ export default function ProyectosPage() {
                     </button>
                   </div>
 
+                  <div className={`relative w-full h-40 md:h-52 mb-6 rounded-lg overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                    <Image
+                      src={project.imagen}
+                      alt={project.titulo}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+
                   <p className={`mb-6 ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
                     {project.descripcion}
                   </p>

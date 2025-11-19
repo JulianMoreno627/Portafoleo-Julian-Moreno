@@ -5,7 +5,7 @@ import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons";
 import { useTheme } from "./ThemeProvider";
 
 export default function ClientOnlyThemeButton() {
-  const { setDarkMode } = useTheme();
+  const { setMode } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ export default function ClientOnlyThemeButton() {
     <ThemeTogglerButton
       variant="default"
       size="default"
-      modes={["light", "dark"]}
+      modes={["light", "dark", "system"]}
       onImmediateChange={(next) => {
-        setDarkMode(next === 'dark');
+        setMode(next);
       }}
     />
   );
