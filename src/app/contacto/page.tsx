@@ -1,34 +1,12 @@
 "use client";
-
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import ContactForm from "@/components/ContactForm";
 import { useTheme } from "@/components/ThemeProvider";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function ContactoPage() {
   const { darkMode } = useTheme();
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    mensaje: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar el formulario
-    console.log("Formulario enviado:", formData);
-    alert(t('contact.form.success'));
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   return (
     <main
@@ -50,93 +28,7 @@ export default function ContactoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Formulario */}
           <div className="animate-fade-in-right">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="nombre"
-                  className={`block text-sm font-medium mb-2 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  {t('contact.form.name')}
-                </label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  value={formData.nombre}
-                  onChange={handleChange}
-                  required
-                  className={`w-full px-4 py-3 rounded-lg ${
-                    darkMode
-                      ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
-                      : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
-                  } outline-none transition`}
-                  placeholder={t('contact.form.name.placeholder')}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className={`block text-sm font-medium mb-2 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  {t('contact.form.email')}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className={`w-full px-4 py-3 rounded-lg ${
-                    darkMode
-                      ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
-                      : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
-                  } outline-none transition`}
-                  placeholder={t('contact.form.email.placeholder')}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="mensaje"
-                  className={`block text-sm font-medium mb-2 ${
-                    darkMode ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  {t('contact.form.message')}
-                </label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  value={formData.mensaje}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className={`w-full px-4 py-3 rounded-lg ${
-                    darkMode
-                      ? "bg-gray-900 border border-gray-800 focus:border-cyan-500"
-                      : "bg-gray-50 border border-gray-300 focus:border-cyan-500"
-                  } outline-none transition resize-none`}
-                  placeholder={t('contact.form.message.placeholder')}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className={`w-full py-3 ${
-                  darkMode
-                    ? "bg-cyan-500 text-black hover:bg-cyan-400"
-                    : "bg-cyan-600 text-white hover:bg-cyan-500"
-                } font-semibold rounded-lg shadow transition animate-pulse-fade-in`}
-              >
-                {t('contact.form.submit')}
-              </button>
-            </form>
+            <ContactForm />
           </div>
 
           {/* Información de contacto */}
